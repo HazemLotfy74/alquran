@@ -10,7 +10,6 @@ class Assets {
   static const String imagesBackground2 = 'assets/images/background2.png';
   static const String imagesClockOutline = 'assets/images/clock-outline.svg';
   static const String imagesClockSvgrepo = 'assets/images/clock-svgrepo.svg';
-  static const String imagesDohaa = 'assets/images/dohaa.svg';
   static const String imagesHeadphoneSvgrepo =
       'assets/images/headphone-svgrepo.svg';
   static const String imagesMore = 'assets/images/more.svg';
@@ -20,14 +19,9 @@ class Assets {
   static const String imagesQuranSplash = 'assets/images/quranSplash.png';
   static const String imagesQuranSplash2 = 'assets/images/quranSplash2.png';
   static const String imagesSebah = 'assets/images/sebah.svg';
-  static const String imagesSelectedAzkarIcon =
-      'assets/images/selected_azkar_icon.svg';
-  static const String imagesSelectedDuahIcon =
-      'assets/images/selected_duah_icon.svg';
   static const String imagesSelectedPrayerIcon =
       'assets/images/selected_prayer_icon.svg';
-  static const String imagesSelectedQuranIcon =
-      'assets/images/selected_quran_icon.svg';
+
   static const String imagesSelectedTasbehIcon =
       'assets/images/selected_tasbeh_icon.svg';
   static const String imagesSetting = 'assets/images/setting.svg';
@@ -36,8 +30,19 @@ class Assets {
       'assets/images/unselected_azkar_icon.svg';
   static const String imagesUnselectedDoahIcon =
       'assets/images/unselected_doah_icon.svg';
-  static const String imagesUnselectedPrayerIcon =
-      'assets/images/unselected_prayer_icon.svg';
+
   static const String imagesUnselectedTasbehIcon =
       'assets/images/unselected_tasbeh_icon.svg';
+
+  //================= images of bottom navbar ====================
+  static const String imagesSelectedQuranIcon =
+      'assets/images/selected_quran_icon.svg';
+  static const String imagesUnselectedPrayerIcon =
+      'assets/images/unselected_prayer_icon.svg';
+  static const String imagesDohaa = 'assets/images/dohaa.svg';
+  static const String imagesSebahF = 'assets/images/sebah.svg';
+  static const String imagesSelectedAzkarIcon =
+      'assets/images/selected_azkar_icon.svg';
+  static const String imagesSelectedDuahIcon =
+      'assets/images/selected_duah_icon.svg';
 }
