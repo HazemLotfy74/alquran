@@ -1,6 +1,5 @@
 import 'package:alquran/core/functions/on_generate_route.dart';
 import 'package:alquran/core/utils/app_theme.dart';
-import 'package:alquran/features/splash/presentation/views/splash_view.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -16,10 +15,10 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       locale: Locale('ar'),
-      onGenerateRoute: onGenerateRoute,
+      onGenerateRoute: AppRouter.onGenerateRoute,
       title: 'Alquran',
       theme: AppTheme.lightTheme,
-      initialRoute: SplashView.routeName,
+      initialRoute: AppRouter.splash,
     );
   }
 }
