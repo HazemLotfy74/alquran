@@ -29,30 +29,30 @@ class BottomNavBar extends StatelessWidget {
         ),
         BottomNavigationBarItem(
           icon: SvgPicture.asset(
-              Assets.imagesUnselectedPrayerIcon,
-              width: 24,
-              height: 24,
-          ),
-          label: "قبلة الصلاة",
-        ),
-        BottomNavigationBarItem(
-          icon: SvgPicture.asset(Assets.imagesDohaa, width: 24,
-            height: 24,),
-          label: "أدعية",
-        ),
-        BottomNavigationBarItem(
-          icon: SvgPicture.asset(
-            Assets.imagesSelectedAzkarIcon,
+            Assets.imagesUnselectedPrayerIcon,
             width: 24,
             height: 24,
           ),
-          label: "الأذكار",
+          activeIcon: SvgPicture.asset(
+            Assets.imagesSelectedPrayerIcon,
+            width: 24,
+            height: 24,
+          ),
+
+          label: "قبلة الصلاة",
         ),
         BottomNavigationBarItem(
-          icon: SvgPicture.asset(Assets.imagesSebahF,
+          icon: SvgPicture.asset(
+            Assets.imagesUnselectedTasbehIcon,
             width: 24,
-            height: 24,),
-          label: "المسبحة",
+            height: 24,
+          ),
+          activeIcon: SvgPicture.asset(
+            Assets.imagesSebahF,
+            width: 24,
+            height: 24,
+          ),
+          label: "السبحة",
         ),
       ],
     );

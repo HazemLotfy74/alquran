@@ -19,30 +19,34 @@ class Assets {
   static const String imagesQuranSplash = 'assets/images/quranSplash.png';
   static const String imagesQuranSplash2 = 'assets/images/quranSplash2.png';
   static const String imagesSebah = 'assets/images/sebah.svg';
-  static const String imagesSelectedPrayerIcon =
-      'assets/images/selected_prayer_icon.svg';
 
-  static const String imagesSelectedTasbehIcon =
-      'assets/images/selected_tasbeh_icon.svg';
   static const String imagesSetting = 'assets/images/setting.svg';
   static const String imagesSurahNumber = 'assets/images/surah_number.svg';
-  static const String imagesUnselectedAzkarIcon =
-      'assets/images/unselected_azkar_icon.svg';
+
   static const String imagesUnselectedDoahIcon =
       'assets/images/unselected_doah_icon.svg';
 
-  static const String imagesUnselectedTasbehIcon =
-      'assets/images/unselected_tasbeh_icon.svg';
-
   //================= images of bottom navbar ====================
-  static const String imagesSelectedQuranIcon =
-      'assets/images/selected_quran_icon.svg';
-  static const String imagesUnselectedPrayerIcon =
-      'assets/images/unselected_prayer_icon.svg';
   static const String imagesDohaa = 'assets/images/dohaa.svg';
   static const String imagesSebahF = 'assets/images/sebah.svg';
+
+ // ================= images of unselected bottom navbar =================
+  static const String imagesUnselectedPrayerIcon =
+      'assets/images/unselected_prayer_icon.svg';
+  static const String imagesUnselectedTasbehIcon =
+      'assets/images/unselected_tasbeh_icon.svg';
+  static const String imagesUnselectedAzkarIcon =
+      'assets/images/unselected_azkar_icon.svg';
+
+  // ================= images of selected bottom navbar =================
+  static const String imagesSelectedPrayerIcon =
+      'assets/images/selected_prayer_icon.svg';
   static const String imagesSelectedAzkarIcon =
       'assets/images/selected_azkar_icon.svg';
   static const String imagesSelectedDuahIcon =
       'assets/images/selected_duah_icon.svg';
+  static const String imagesSelectedTasbehIcon =
+      'assets/images/selected_tasbeh_icon.svg';
+  static const String imagesSelectedQuranIcon =
+      'assets/images/selected_quran_icon.svg';
 }
