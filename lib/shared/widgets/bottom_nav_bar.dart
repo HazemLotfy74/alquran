@@ -29,15 +29,14 @@ class BottomNavBar extends StatelessWidget {
         ),
         BottomNavigationBarItem(
           icon: SvgPicture.asset(
-              Assets.imagesUnselectedPrayerIcon,
-              width: 24,
-              height: 24,
+            Assets.imagesUnselectedPrayerIcon,
+            width: 24,
+            height: 24,
           ),
           label: "قبلة الصلاة",
         ),
         BottomNavigationBarItem(
-          icon: SvgPicture.asset(Assets.imagesDohaa, width: 24,
-            height: 24,),
+          icon: SvgPicture.asset(Assets.imagesDohaa, width: 24, height: 24),
           label: "أدعية",
         ),
         BottomNavigationBarItem(
@@ -49,9 +48,7 @@ class BottomNavBar extends StatelessWidget {
           label: "الأذكار",
         ),
         BottomNavigationBarItem(
-          icon: SvgPicture.asset(Assets.imagesSebahF,
-            width: 24,
-            height: 24,),
+          icon: SvgPicture.asset(Assets.imagesSebah, width: 24, height: 24),
           label: "المسبحة",
         ),
       ],

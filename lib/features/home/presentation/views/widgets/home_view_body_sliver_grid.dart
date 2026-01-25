@@ -1,3 +1,4 @@
+import 'package:alquran/core/functions/on_generate_route.dart';
 import 'package:alquran/features/home/domain/entities/home_grid_items_entity.dart';
 import 'package:alquran/features/home/presentation/views/widgets/home_view_grid_items.dart';
 import 'package:alquran/generated/assets.dart';
@@ -16,11 +17,6 @@ class HomeViewBodySliverGrid extends StatelessWidget {
     ),
     HomeGridItemsEntity(image: Assets.imagesDohaa, title: 'ادعية'),
     HomeGridItemsEntity(image: Assets.imagesPrayDaySvgrepo, title: 'الاذكار'),
-    HomeGridItemsEntity(image: Assets.imagesSebah, title: 'المسبحة'),
-    HomeGridItemsEntity(
-      image: Assets.imagesClockSvgrepo,
-      title: 'مواقيت الصلاه',
-    ),
   ];
   @override
   Widget build(BuildContext context) {
@@ -29,11 +25,17 @@ class HomeViewBodySliverGrid extends StatelessWidget {
         crossAxisCount: 2,
         crossAxisSpacing: 15,
         mainAxisSpacing: 15,
-        childAspectRatio: 1.2,
       ),
-      itemCount: 6,
+      itemCount: items.length,
       itemBuilder: (context, index) {
-        return HomeViewGridItems(item: items[index]);
+        return HomeViewGridItems(
+          item: items[index],
+          onTap: () {
+            if (index == 0) {
+              Navigator.pushNamed(context, AppRouter.quran);
+            }
+          },
+        );
       },
     );
   }

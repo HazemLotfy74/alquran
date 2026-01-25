@@ -1,6 +1,8 @@
+import 'package:alquran/features/home/presentation/manager/location_cubit.dart';
 import 'package:alquran/features/home/presentation/views/widgets/home_view_body.dart';
 import 'package:alquran/shared/widgets/bottom_nav_bar.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class HomeView extends StatelessWidget {
   const HomeView({super.key});
@@ -9,9 +11,15 @@ class HomeView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: HomeViewBody(),
-      bottomNavigationBar: BottomNavBar(onTap: (int value) {}, currentIndex: 0),
+    return BlocProvider(
+      create: (context) => LocationCubit(),
+      child: Scaffold(
+        body: HomeViewBody(),
+        bottomNavigationBar: BottomNavBar(
+          onTap: (int value) {},
+          currentIndex: 0,
+        ),
+      ),
     );
   }
 }

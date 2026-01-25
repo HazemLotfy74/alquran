@@ -35,7 +35,16 @@ dependencies:
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^1.0.8
   flutter_svg: ^2.2.3
-
+  intl: ^0.20.2
+  hijri: ^3.0.0
+  get: ^4.7.3
+  adhan: ^2.0.0+1
+  geocoding: ^4.0.0
+  geolocator: ^14.0.2
+  location: ^8.0.1
+  flutter_bloc: ^9.1.1
+  dartz: ^0.10.1
+  skeletonizer: ^2.1.2
 dev_dependencies:
   flutter_test:
     sdk: flutter
