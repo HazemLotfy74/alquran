@@ -16,7 +16,7 @@ class _MainLayoutPageState extends State<MainLayoutPage> {
   // make variable to know which page is currently selected
   int currentIndex = 0;
 
-  // list of all pages on the app
+  // list of all pages on the app.
   final pages = const [HomeView(), TimePrayerView()];
 
   @override
