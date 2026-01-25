@@ -45,6 +45,10 @@ dependencies:
   flutter_bloc: ^9.1.1
   dartz: ^0.10.1
   skeletonizer: ^2.1.2
+  adhan: ^2.0.0+1
+  flutter_bloc: ^9.1.1
+  equatable: ^2.0.8
+
 dev_dependencies:
   flutter_test:
     sdk: flutter
@@ -84,16 +88,16 @@ flutter:
   # list giving the asset and other descriptors for the font. For
   # example:
   fonts:
-     - family: Poppins
-       fonts:
-         - asset: assets/fonts/Poppins-Bold.ttf
-           weight: 700
-         - asset: assets/fonts/Poppins-SemiBold.ttf
-           weight: 600
-         - asset: assets/fonts/Poppins-Medium.ttf
-           weight: 500
-         - asset: assets/fonts/Poppins-Regular.ttf
-           weight: 400
+    - family: Poppins
+      fonts:
+        - asset: assets/fonts/Poppins-Bold.ttf
+          weight: 700
+        - asset: assets/fonts/Poppins-SemiBold.ttf
+          weight: 600
+        - asset: assets/fonts/Poppins-Medium.ttf
+          weight: 500
+        - asset: assets/fonts/Poppins-Regular.ttf
+          weight: 400
 
   #
   # For details regarding fonts from package dependencies,
