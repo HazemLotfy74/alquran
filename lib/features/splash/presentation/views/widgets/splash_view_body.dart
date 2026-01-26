@@ -1,4 +1,4 @@
-import 'package:alquran/features/home/presentation/views/home_view.dart';
+import 'package:alquran/core/functions/on_generate_route.dart';
 import 'package:alquran/generated/assets.dart';
 import 'package:flutter/material.dart';
 
@@ -15,7 +15,7 @@ class _SplashViewBodyState extends State<SplashViewBody> {
       if (!mounted) {
         return;
       }
-      Navigator.pushNamed(context, HomeView.routeName);
+      Navigator.pushNamed(context, AppRouter.mainLayout);
     });
   }
 

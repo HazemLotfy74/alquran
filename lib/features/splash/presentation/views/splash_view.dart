@@ -3,7 +3,8 @@ import 'package:flutter/material.dart';
 
 class SplashView extends StatelessWidget {
   const SplashView({super.key});
-  static const String routeName = 'splash';
+  // I delete it because we don't need it
+  // static const String routeName = 'splash';
 
   @override
   Widget build(BuildContext context) {
