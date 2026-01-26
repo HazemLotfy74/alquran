@@ -24,12 +24,7 @@ class _ReadQuranViewBodyState extends State<ReadQuranViewBody> {
         Column(
           children: [
             SizedBox(height: 50),
-            ValueListenableBuilder(
-              valueListenable: fontSize,
-              builder: (context, value, child) {
-                return QuranTextWidget(fontSizeChanged: fontSize);
-              },
-            ),
+            QuranTextWidget(fontSizeChanged: fontSize),
             SizedBox(height: 20),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
@@ -39,14 +34,14 @@ class _ReadQuranViewBodyState extends State<ReadQuranViewBody> {
                   txt: 'Zoom In',
                   image: Assets.imagesSearchZoomIn,
                   onTap: () {
-                    fontSize.value + 2;
+                    fontSize.value += 2;
                   },
                 ),
                 CustomButton(
                   txt: 'Zoom Out',
                   image: Assets.imagesSearchZoomOut,
                   onTap: () {
-                    fontSize.value - 2;
+                    fontSize.value -= 2;
                   },
                 ),
               ],

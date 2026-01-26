@@ -10,13 +10,7 @@ class HomeView extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocProvider(
       create: (context) => LocationCubit(),
-      child: Scaffold(
-        body: HomeViewBody(),
-        bottomNavigationBar: BottomNavBar(
-          onTap: (int value) {},
-          currentIndex: 0,
-        ),
-      ),
+      child: Scaffold(body: HomeViewBody()),
     );
   }
 }
