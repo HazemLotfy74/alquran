@@ -6,27 +6,48 @@ import '../../../../../core/utils/app_colors.dart';
 import '../../../../../core/utils/app_text_style.dart';
 
 class HomeViewGridItems extends StatelessWidget {
-  const HomeViewGridItems({super.key, required this.item});
+  const HomeViewGridItems({super.key, required this.item, required this.onTap});
   final HomeGridItemsEntity item;
+  final VoidCallback onTap;
   @override
   Widget build(BuildContext context) {
-    return Container(
-      padding: EdgeInsetsGeometry.symmetric(horizontal: 60, vertical: 30),
-      decoration: BoxDecoration(
-        color: Colors.white,
-        borderRadius: BorderRadius.circular(10),
-      ),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.center,
-        mainAxisAlignment: MainAxisAlignment.center,
-        spacing: 10,
-        children: [
-          SvgPicture.asset(item.image, width: 50, height: 50),
-          Text(
-            item.title,
-            style: AppTextStyle.bold20.copyWith(color: AppColors.primaryColor),
-          ),
-        ],
+    return GestureDetector(
+      onTap: onTap,
+      child: Container(
+        decoration: BoxDecoration(
+          color: Colors.white,
+          borderRadius: BorderRadius.circular(10),
+          boxShadow: [
+            BoxShadow(
+              color: Colors.grey.shade200,
+              spreadRadius: 0,
+              blurRadius: 20,
+              offset: Offset(0, 5),
+            ),
+          ],
+        ),
+        child: LayoutBuilder(
+          builder: (context, constraints) {
+            return Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              spacing: 10,
+              children: [
+                SvgPicture.asset(
+                  item.image,
+                  height: constraints.maxHeight * 0.3,
+                ),
+                Text(
+                  item.title,
+                  style: AppTextStyle.bold20.copyWith(
+                    color: AppColors.primaryColor,
+                  ),
+                  textAlign: TextAlign.center,
+                  maxLines: 1,
+                ),
+              ],
+            );
+          },
+        ),
       ),
     );
   }
