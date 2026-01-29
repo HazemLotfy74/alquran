@@ -25,9 +25,13 @@ class BottomNavBar extends StatelessWidget {
             width: 24,
             height: 24,
           ),
+          activeIcon: SvgPicture.asset(
+            Assets.imagesSelectedQuranIcon,
+            width: 24,
+            height: 24,
+          ),
           label: "الرئيسية",
-        ),
-        BottomNavigationBarItem(
+        ),        BottomNavigationBarItem(
           icon: SvgPicture.asset(
             Assets.imagesUnselectedPrayerIcon,
             width: 24,
@@ -45,11 +49,12 @@ class BottomNavBar extends StatelessWidget {
             width: 24,
             height: 24,
           ),
-          label: "الأذكار",
-        ),
-        BottomNavigationBarItem(
-          icon: SvgPicture.asset(Assets.imagesSebah, width: 24, height: 24),
-          label: "المسبحة",
+          activeIcon: SvgPicture.asset(
+            Assets.imagesSelectedTasbehIcon,
+            width: 24,
+            height: 24,
+          ),
+          label: "السبحة",
         ),
       ],
     );

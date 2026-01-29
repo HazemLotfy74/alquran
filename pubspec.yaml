@@ -45,8 +45,6 @@ dependencies:
   flutter_bloc: ^9.1.1
   dartz: ^0.10.1
   skeletonizer: ^2.1.2
-  adhan: ^2.0.0+1
-  flutter_bloc: ^9.1.1
   equatable: ^2.0.8
 
 dev_dependencies:
