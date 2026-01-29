@@ -37,17 +37,15 @@ class BottomNavBar extends StatelessWidget {
             width: 24,
             height: 24,
           ),
-          activeIcon: SvgPicture.asset(
-            Assets.imagesSelectedPrayerIcon,
-            width: 24,
-            height: 24,
-          ),
-
           label: "قبلة الصلاة",
         ),
         BottomNavigationBarItem(
+          icon: SvgPicture.asset(Assets.imagesDohaa, width: 24, height: 24),
+          label: "أدعية",
+        ),
+        BottomNavigationBarItem(
           icon: SvgPicture.asset(
-            Assets.imagesUnselectedTasbehIcon,
+            Assets.imagesSelectedAzkarIcon,
             width: 24,
             height: 24,
           ),
