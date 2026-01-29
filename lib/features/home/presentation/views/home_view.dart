@@ -12,10 +12,6 @@ class HomeView extends StatelessWidget {
       create: (context) => LocationCubit(),
       child: Scaffold(
         body: HomeViewBody(),
-        bottomNavigationBar: BottomNavBar(
-          onTap: (int value) {},
-          currentIndex: 0,
-        ),
       ),
     );
   }

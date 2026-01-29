@@ -15,7 +15,7 @@ class _SplashViewBodyState extends State<SplashViewBody> {
       if (!mounted) {
         return;
       }
-      Navigator.pushNamed(context, AppRouter.home);
+      Navigator.pushNamed(context, AppRouter.mainLayout);
     });
   }
 

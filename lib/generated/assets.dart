@@ -25,16 +25,7 @@ class Assets {
   static const String imagesSearchZoomIn = 'assets/images/search-zoom-in.svg';
   static const String imagesSearchZoomOut = 'assets/images/search-zoom-out.svg';
   static const String imagesSebah = 'assets/images/sebah.svg';
-  static const String imagesSelectedAzkarIcon =
-      'assets/images/selected_azkar_icon.svg';
-  static const String imagesSelectedDuahIcon =
-      'assets/images/selected_duah_icon.svg';
-  static const String imagesSelectedPrayerIcon =
-      'assets/images/selected_prayer_icon.svg';
-  static const String imagesSelectedQuranIcon =
-      'assets/images/selected_quran_icon.svg';
-  static const String imagesSelectedTasbehIcon =
-      'assets/images/selected_tasbeh_icon.svg';
+
   static const String imagesSetting = 'assets/images/setting.svg';
   static const String imagesSurahNumber = 'assets/images/surah_number.svg';
 

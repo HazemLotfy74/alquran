@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../../../../../core/utils/app_colors.dart';
+import '../../../../../core/utils/app_text_style.dart';
 import '../../../domain/entities/prayer_time_entity.dart';
 
 class CurrentPrayerCard extends StatelessWidget {
@@ -13,7 +15,7 @@ class CurrentPrayerCard extends StatelessWidget {
       padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 18),
       decoration: BoxDecoration(
         gradient: const LinearGradient(
-          colors: [Color(0xFF2BB673), Color(0xFF1FA37A)],
+          colors: [(AppColors.primaryColor), (AppColors.boldGreenColor)],
         ),
         borderRadius: BorderRadius.circular(14),
       ),
@@ -22,15 +24,11 @@ class CurrentPrayerCard extends StatelessWidget {
         children: [
           Text(
             _formatTime(context, prayer.time),
-            style: const TextStyle(color: Colors.white, fontSize: 16),
+            style: AppTextStyle.semiBold16.copyWith(color: Colors.white),
           ),
           Text(
             prayer.name,
-            style: const TextStyle(
-              color: Colors.white,
-              fontSize: 16,
-              fontWeight: FontWeight.bold,
-            ),
+            style: AppTextStyle.semiBold16.copyWith(color: Colors.white),
           ),
         ],
       ),
