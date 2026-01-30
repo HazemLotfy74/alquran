@@ -7,20 +7,30 @@ class Assets {
   static const String fontsPoppinsRegular = 'assets/fonts/Poppins-Regular.ttf';
   static const String fontsPoppinsSemiBold =
       'assets/fonts/Poppins-SemiBold.ttf';
+  static const String imagesAfterWodoqAzkar =
+      'assets/images/after_wodoq_azkar.svg';
+  static const String imagesAzkarMorning = 'assets/images/azkar_morning.svg';
+  static const String imagesAzkarNight = 'assets/images/azkar_night.svg';
   static const String imagesBackground2 = 'assets/images/background2.png';
   static const String imagesClockOutline = 'assets/images/clock-outline.svg';
   static const String imagesClockSvgrepo = 'assets/images/clock-svgrepo.svg';
   static const String imagesDohaa = 'assets/images/dohaa.svg';
   static const String imagesHeadphoneSvgrepo =
       'assets/images/headphone-svgrepo.svg';
+  static const String imagesListening = 'assets/images/listening.png';
   static const String imagesMore = 'assets/images/more.svg';
   static const String imagesMosqueSvgrepoCom =
       'assets/images/mosque-svgrepo-com.svg';
+  static const String imagesNext = 'assets/images/Next.svg';
+  static const String imagesPlay = 'assets/images/Play.svg';
+  static const String imagesPrayAzkar = 'assets/images/pray_azkar.svg';
   static const String imagesPrayDaySvgrepo =
       'assets/images/pray-day-svgrepo.svg';
+  static const String imagesPrevious = 'assets/images/Previous.svg';
   static const String imagesQuranBookSvg = 'assets/images/quran-bookSvg.svg';
   static const String imagesQuranSplash = 'assets/images/quranSplash.png';
   static const String imagesQuranSplash2 = 'assets/images/quranSplash2.png';
+  static const String imagesRepeat = 'assets/images/Repeat.svg';
   static const String imagesSearch = 'assets/images/search.svg';
   static const String imagesSearchZoomIn = 'assets/images/search-zoom-in.svg';
   static const String imagesSearchZoomOut = 'assets/images/search-zoom-out.svg';
@@ -36,26 +46,18 @@ class Assets {
   static const String imagesSelectedTasbehIcon =
       'assets/images/selected_tasbeh_icon.svg';
   static const String imagesSetting = 'assets/images/setting.svg';
+  static const String imagesSleepAzkar = 'assets/images/sleep_azkar.svg';
   static const String imagesSurahNumber = 'assets/images/surah_number.svg';
-
+  static const String imagesUnselectedAzkarIcon =
+      'assets/images/unselected_azkar_icon.svg';
   static const String imagesUnselectedDoahIcon =
       'assets/images/unselected_doah_icon.svg';
   static const String imagesUnselectedPrayerIcon =
       'assets/images/unselected_prayer_icon.svg';
   static const String imagesUnselectedTasbehIcon =
       'assets/images/unselected_tasbeh_icon.svg';
-  static const String imagesUnselectedAzkarIcon =
-      'assets/images/unselected_azkar_icon.svg';
-
-  // ================= images of selected bottom navbar =================
-  static const String imagesSelectedPrayerIcon =
-      'assets/images/selected_prayer_icon.svg';
-  static const String imagesSelectedAzkarIcon =
-      'assets/images/selected_azkar_icon.svg';
-  static const String imagesSelectedDuahIcon =
-      'assets/images/selected_duah_icon.svg';
-  static const String imagesSelectedTasbehIcon =
-      'assets/images/selected_tasbeh_icon.svg';
-  static const String imagesSelectedQuranIcon =
-      'assets/images/selected_quran_icon.svg';
+  static const String imagesVecteezyMuslimManPrayingAfterShalat7885406 =
+      'assets/images/vecteezy_muslim-man-praying-after-shalat_7885406.svg';
+  static const String imagesWakeAzkar = 'assets/images/wake_azkar.svg';
+  static const String imagesWodoqAzkar = 'assets/images/wodoq_azkar.svg';
 }

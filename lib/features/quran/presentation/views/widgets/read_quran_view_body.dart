@@ -1,6 +1,7 @@
 import 'package:alquran/features/quran/presentation/views/widgets/custom_button.dart';
 import 'package:alquran/features/quran/presentation/views/widgets/quran_text_widget.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 import '../../../../../generated/assets.dart';
 
@@ -31,14 +32,14 @@ class _ReadQuranViewBodyState extends State<ReadQuranViewBody> {
               spacing: 20,
               children: [
                 CustomButton(
-                  txt: 'Zoom In',
+                  txt: 'Zoom In'.tr,
                   image: Assets.imagesSearchZoomIn,
                   onTap: () {
                     fontSize.value += 2;
                   },
                 ),
                 CustomButton(
-                  txt: 'Zoom Out',
+                  txt: 'Zoom Out'.tr,
                   image: Assets.imagesSearchZoomOut,
                   onTap: () {
                     fontSize.value -= 2;
