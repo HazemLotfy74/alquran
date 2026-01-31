@@ -1,3 +1,4 @@
+import 'package:alquran/features/quran/domain/entities/surah_entity.dart';
 import 'package:alquran/features/quran/presentation/views/widgets/custom_button.dart';
 import 'package:alquran/features/quran/presentation/views/widgets/quran_text_widget.dart';
 import 'package:flutter/material.dart';
@@ -6,8 +7,8 @@ import 'package:get/get.dart';
 import '../../../../../generated/assets.dart';
 
 class ReadQuranViewBody extends StatefulWidget {
-  const ReadQuranViewBody({super.key});
-
+  const ReadQuranViewBody({super.key, required this.surahEntity});
+  final SurahEntity surahEntity;
   @override
   State<ReadQuranViewBody> createState() => _ReadQuranViewBodyState();
 }
@@ -25,7 +26,10 @@ class _ReadQuranViewBodyState extends State<ReadQuranViewBody> {
         Column(
           children: [
             SizedBox(height: 50),
-            QuranTextWidget(fontSizeChanged: fontSize),
+            QuranTextWidget(
+              fontSizeChanged: fontSize,
+              ayah: widget.surahEntity.ayahs,
+            ),
             SizedBox(height: 20),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,

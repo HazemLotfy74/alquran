@@ -4,6 +4,7 @@ import 'package:alquran/features/azkar/presentation/views/read_azkar_view.dart';
 import 'package:alquran/features/home/presentation/views/home_view.dart';
 import 'package:alquran/features/listen_to_quran/presentation/views/listen_to_quran_view.dart';
 import 'package:alquran/features/main_layout/presentation/pages/main_layout_page.dart';
+import 'package:alquran/features/quran/domain/entities/surah_entity.dart';
 import 'package:alquran/features/quran/presentation/views/quran_view.dart';
 import 'package:alquran/features/quran/presentation/views/read_quran_view.dart';
 import 'package:alquran/features/time_prayer/presentation/time_prayer_view.dart';
@@ -38,7 +39,10 @@ class AppRouter {
       case quran:
         return MaterialPageRoute(builder: (_) => const QuranView());
       case readQuran:
-        return MaterialPageRoute(builder: (_) => const ReadQuranView());
+        return MaterialPageRoute(
+          builder: (_) =>
+              ReadQuranView(surah: settings.arguments as SurahEntity),
+        );
       case listenToQuran:
         return MaterialPageRoute(builder: (_) => const ListenToQuranView());
       case azkar:
