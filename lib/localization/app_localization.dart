@@ -9,8 +9,12 @@ class AppTranslations extends Translations {
       'Zoom In': 'Zoom In',
       'Zoom Out': 'Zoom Out',
       'Surahs': 'Surahs',
+      'Meccan': 'Meccan',
+      'Medinan': 'Medinan',
     },
     'ar': {
+      'Meccan': 'مكية',
+      'Medinan': 'مدنية',
       'Surahs': 'السور',
       'am': 'صباحًا',
       'pm': 'مساءً',

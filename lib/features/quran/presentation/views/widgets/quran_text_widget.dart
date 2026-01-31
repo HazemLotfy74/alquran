@@ -1,9 +1,14 @@
+import 'package:alquran/features/quran/domain/entities/ayah_entity.dart';
 import 'package:flutter/material.dart';
 
 class QuranTextWidget extends StatelessWidget {
-  const QuranTextWidget({super.key, required this.fontSizeChanged});
+  const QuranTextWidget({
+    super.key,
+    required this.fontSizeChanged,
+    required this.ayah,
+  });
   final ValueNotifier<double> fontSizeChanged;
-
+  final List<AyahEntity> ayah;
   @override
   Widget build(BuildContext context) {
     return Center(
@@ -28,9 +33,9 @@ class QuranTextWidget extends StatelessWidget {
             child: ValueListenableBuilder(
               valueListenable: fontSizeChanged,
               builder: (context, value, child) {
-                return Text(
-                  'sadasdasdasdasdasdasdasd,asdasdasdasdas,asdasdadsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsd,asddddddddddddddddd,asdddddddddddddddddddd,asdddddddddddddddd,',
-                  style: TextStyle(fontSize: fontSizeChanged.value),
+                return RichText(
+                  textDirection: TextDirection.rtl,
+                  text: TextSpan(children: _buildAyahs(fontSizeChanged.value)),
                 );
               },
             ),
@@ -38,5 +43,42 @@ class QuranTextWidget extends StatelessWidget {
         ),
       ),
     );
+  }
+
+  List<TextSpan> _buildAyahs(double fontSize) {
+    return ayah.map((ayah) {
+      return TextSpan(
+        children: [
+          TextSpan(
+            text: '${ayah.text} ',
+            style: TextStyle(
+              fontSize: fontSize,
+              height: 2,
+              color: Colors.black,
+              fontFamily: 'Amiri', // 👈 مهم
+            ),
+          ),
+
+          /// رقم الآية
+          TextSpan(
+            text: '﴿${ayah.numberInSurah}﴾ ',
+            style: TextStyle(
+              fontSize: fontSize - 4,
+              color: Colors.black54,
+              fontFamily: 'Amiri',
+            ),
+          ),
+        ],
+      );
+    }).toList();
+  }
+
+  String _toArabicNumber(int number) {
+    const arabicNumbers = ['٠', '١', '٢', '٣', '٤', '٥', '٦', '٧', '٨', '٩'];
+    return number
+        .toString()
+        .split('')
+        .map((e) => arabicNumbers[int.parse(e)])
+        .join();
   }
 }

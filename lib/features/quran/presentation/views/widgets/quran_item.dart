@@ -1,18 +1,20 @@
 import 'package:alquran/core/functions/on_generate_route.dart';
 import 'package:alquran/core/utils/app_colors.dart';
 import 'package:alquran/core/utils/app_text_style.dart';
+import 'package:alquran/features/quran/domain/entities/surah_entity.dart';
 import 'package:alquran/generated/assets.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:get/get.dart';
 
 class QuranItem extends StatelessWidget {
-  const QuranItem({super.key});
-
+  const QuranItem({super.key, required this.surah});
+  final SurahEntity surah;
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        Navigator.pushNamed(context, AppRouter.readQuran);
+        Navigator.pushNamed(context, AppRouter.readQuran, arguments: surah);
       },
       child: Card(
         elevation: 2,
@@ -27,24 +29,32 @@ class QuranItem extends StatelessWidget {
                 right: 0,
                 top: 0,
                 bottom: 0,
-                child: Center(child: Text('114', style: AppTextStyle.medium14)),
+                child: Center(
+                  child: Text(
+                    surah.number.toString(),
+                    style: AppTextStyle.medium14,
+                  ),
+                ),
               ),
               SvgPicture.asset(Assets.imagesSurahNumber),
             ],
           ),
-          title: Text('الفاتحة', style: AppTextStyle.bold15),
-          subtitle: Text('عدد الايات : 7', style: AppTextStyle.regular13),
+          title: Text(surah.name, style: AppTextStyle.bold15),
+          subtitle: Text(
+            'عدد الايات : ${surah.ayahs.length}',
+            style: AppTextStyle.regular13,
+          ),
           trailing: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Text(
-                'الفاتحة',
+                surah.englishName,
                 style: AppTextStyle.bold15.copyWith(
                   color: AppColors.primaryColor,
                 ),
               ),
               Text(
-                'مكية',
+                surah.revelationType.name.tr,
                 style: AppTextStyle.regular13.copyWith(
                   color: AppColors.greyColor2,
                 ),
