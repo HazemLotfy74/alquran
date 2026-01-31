@@ -48,7 +48,7 @@ class MisbahaCounter extends StatelessWidget {
             ElevatedButton(onPressed: onMinus, child: Icon(Icons.remove)),
           ],
         ),
-        const SizedBox(height: 20),
+        const SizedBox(height: 25),
 
         ElevatedButton(onPressed: onReset, child: Icon(Icons.restart_alt)),
       ],
