@@ -31,8 +31,7 @@ class BottomNavBar extends StatelessWidget {
             height: 24,
           ),
           label: "الرئيسية",
-        ),
-        BottomNavigationBarItem(
+        ),        BottomNavigationBarItem(
           icon: SvgPicture.asset(
             Assets.imagesUnselectedPrayerIcon,
             width: 24,
