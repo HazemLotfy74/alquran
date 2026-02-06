@@ -1,4 +1,4 @@
-import 'package:alquran/features/quran/data/models/surah_model.dart';
+import 'package:alquran/core/models/surah_model.dart';
 
 class ListOfSurahsModel {
   List<Surah> surahs;

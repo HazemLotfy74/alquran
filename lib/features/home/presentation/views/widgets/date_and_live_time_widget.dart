@@ -21,18 +21,13 @@ class DateAndLiveTimeWidget extends StatelessWidget {
         gradient: LinearGradient(
           colors: [
             AppColors.primaryColor,
-            AppColors.primaryColor.withOpacity(0.5),
+            AppColors.primaryColor.withValues(alpha: 0.5),
           ],
         ),
       ),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceAround,
         children: [
-          SvgPicture.asset(
-            Assets.imagesVecteezyMuslimManPrayingAfterShalat7885406,
-            width: 150,
-            height: 150,
-          ),
           Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             spacing: 10,
@@ -43,6 +38,11 @@ class DateAndLiveTimeWidget extends StatelessWidget {
               ),
               LiveTimeWidget(),
             ],
+          ),
+          SvgPicture.asset(
+            Assets.imagesVecteezyMuslimManPrayingAfterShalat7885406,
+            width: 150,
+            height: 150,
           ),
         ],
       ),

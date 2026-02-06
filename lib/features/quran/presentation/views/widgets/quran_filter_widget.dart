@@ -1,5 +1,8 @@
 import 'package:alquran/features/quran/presentation/views/widgets/animated_filter_item.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+
+import '../../../../../core/cubits/quran_cubit/quran_cubit.dart';
 
 class QuranFilterWidget extends StatefulWidget {
   const QuranFilterWidget({super.key, required this.filterTxt});
@@ -29,7 +32,7 @@ class _QuranFilterWidgetState extends State<QuranFilterWidget> {
         ],
       ),
       child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: List.generate(widget.filterTxt.length, (index) {
           return ValueListenableBuilder(
             valueListenable: selectedIndex,
@@ -37,6 +40,11 @@ class _QuranFilterWidgetState extends State<QuranFilterWidget> {
               return GestureDetector(
                 onTap: () {
                   selectedIndex.value = index;
+                  if (index == 0) {
+                    context.read<QuranCubit>().getSurahs();
+                  } else {
+                    context.read<QuranCubit>().getFavoriteSurahs();
+                  }
                 },
                 child: AnimatedFilterItem(
                   index: index,

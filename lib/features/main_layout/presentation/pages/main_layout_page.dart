@@ -1,8 +1,9 @@
 import 'package:alquran/features/home/presentation/views/home_view.dart';
-import 'package:alquran/features/quran/presentation/views/quran_view.dart';
 import 'package:alquran/features/time_prayer/presentation/time_prayer_view.dart';
 import 'package:alquran/shared/widgets/bottom_nav_bar.dart';
 import 'package:flutter/material.dart';
+
+import '../../../misbaha/presentation/misbaha_view.dart';
 
 class MainLayoutPage extends StatefulWidget {
   final Widget? child;
@@ -18,7 +19,7 @@ class _MainLayoutPageState extends State<MainLayoutPage> {
   int currentIndex = 0;
 
   // list of all pages on the app.
-  final pages = const [HomeView(), TimePrayerView(), QuranView()];
+  final pages = const [HomeView(), TimePrayerView(), MisbahaView()];
 
   @override
   Widget build(BuildContext context) {

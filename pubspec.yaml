@@ -48,6 +48,7 @@ dependencies:
   equatable: ^2.0.8
   http: ^1.6.0
   get_it: ^9.2.0
+  just_audio: ^0.10.5
 
 dev_dependencies:
   flutter_test:

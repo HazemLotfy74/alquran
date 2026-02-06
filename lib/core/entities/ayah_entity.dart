@@ -7,9 +7,10 @@ class AyahEntity {
   final int page;
   final int ruku;
   final int hizbQuarter;
+  String? audioUrl;
   final dynamic sajda;
 
-  const AyahEntity({
+  AyahEntity({
     required this.number,
     required this.text,
     required this.numberInSurah,
@@ -19,5 +20,6 @@ class AyahEntity {
     required this.ruku,
     required this.hizbQuarter,
     required this.sajda,
+    this.audioUrl,
   });
 }

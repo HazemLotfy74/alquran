@@ -1,8 +1,8 @@
 import 'package:alquran/core/extension/quran_reveltation_extension.dart';
-import 'package:alquran/features/quran/domain/entities/surah_entity.dart';
 
-import '../../../../core/enums/RevelationType.dart';
-import 'ayah_model.dart';
+import '../../../../core/models/ayah_model.dart';
+import '../entities/surah_entity.dart';
+import '../enums/revelation_type.dart';
 
 class Surah {
   int number;

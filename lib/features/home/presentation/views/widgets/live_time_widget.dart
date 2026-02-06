@@ -2,7 +2,7 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 
-import '../../../../../core/functions/getLocalizedTime.dart';
+import '../../../../../core/functions/get_localized_time.dart';
 import '../../../../../core/utils/app_text_style.dart';
 
 class LiveTimeWidget extends StatefulWidget {

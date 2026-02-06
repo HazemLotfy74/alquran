@@ -1,11 +1,10 @@
-import 'dart:developer';
-
 import 'package:alquran/core/errors/failure.dart';
 import 'package:alquran/core/services/api_service.dart';
-import 'package:alquran/features/quran/data/models/surah_model.dart';
-import 'package:alquran/features/quran/domain/entities/surah_entity.dart';
 import 'package:alquran/features/quran/domain/repo/quran_repo.dart';
 import 'package:dartz/dartz.dart';
+
+import '../../../../core/entities/surah_entity.dart';
+import '../../../../core/models/surah_model.dart';
 
 class QuranRepoImpl implements QuranRepo {
   const QuranRepoImpl({required this.apiService});
@@ -20,7 +19,6 @@ class QuranRepoImpl implements QuranRepo {
           return Surah.fromJson(e).toSurahEntity();
         }),
       );
-      log('Surah data = $surahs');
       return Right(surahs);
     } catch (e) {
       return Left(ServerFailure(e.toString()));

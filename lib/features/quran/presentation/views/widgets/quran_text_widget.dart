@@ -1,4 +1,4 @@
-import 'package:alquran/features/quran/domain/entities/ayah_entity.dart';
+import 'package:alquran/core/entities/ayah_entity.dart';
 import 'package:flutter/material.dart';
 
 class QuranTextWidget extends StatelessWidget {
@@ -61,7 +61,7 @@ class QuranTextWidget extends StatelessWidget {
 
           /// رقم الآية
           TextSpan(
-            text: '﴿${ayah.numberInSurah}﴾ ',
+            text: '﴿${_toArabicNumber(ayah.numberInSurah)}﴾ ',
             style: TextStyle(
               fontSize: fontSize - 4,
               color: Colors.black54,

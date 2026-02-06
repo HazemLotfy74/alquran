@@ -1,0 +1,1 @@
+enum RevelationType { meccan, medinan }
