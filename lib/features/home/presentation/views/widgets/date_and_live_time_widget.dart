@@ -28,11 +28,6 @@ class DateAndLiveTimeWidget extends StatelessWidget {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceAround,
         children: [
-          SvgPicture.asset(
-            Assets.imagesSelectedTasbehIcon,
-            width: 150,
-            height: 150,
-          ),
           Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             spacing: 10,
@@ -43,6 +38,11 @@ class DateAndLiveTimeWidget extends StatelessWidget {
               ),
               LiveTimeWidget(),
             ],
+          ),
+          SvgPicture.asset(
+            Assets.imagesVecteezyMuslimManPrayingAfterShalat7885406,
+            width: 150,
+            height: 150,
           ),
         ],
       ),

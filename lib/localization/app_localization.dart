@@ -11,8 +11,12 @@ class AppTranslations extends Translations {
       'Surahs': 'Surahs',
       'Meccan': 'Meccan',
       'Medinan': 'Medinan',
+      'Something went wrong': 'Something went wrong',
+      'No results found': 'No results found',
     },
     'ar': {
+      'No results found': 'لا توجد نتائج',
+      'Something went wrong': 'حدث خطأ ما',
       'Meccan': 'مكية',
       'Medinan': 'مدنية',
       'Surahs': 'السور',

@@ -1,6 +1,7 @@
-import 'package:alquran/features/quran/domain/entities/surah_entity.dart';
 import 'package:alquran/features/quran/presentation/views/widgets/quran_item.dart';
 import 'package:flutter/material.dart';
+
+import '../../../../../core/entities/surah_entity.dart';
 
 class QuranSurahSliverList extends StatelessWidget {
   const QuranSurahSliverList({super.key, required this.surahs});

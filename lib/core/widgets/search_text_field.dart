@@ -35,7 +35,7 @@ class SearchTextField extends StatelessWidget {
         onChanged: onChanged,
         keyboardType: TextInputType.text,
         decoration: InputDecoration(
-          hintText: 'ابحث عن سورة,جزء..',
+          hintText: 'ابحث عن سورة,رقم الجزء..',
           hintStyle: AppTextStyle.regular13.copyWith(
             color: AppColors.greyColor,
           ),

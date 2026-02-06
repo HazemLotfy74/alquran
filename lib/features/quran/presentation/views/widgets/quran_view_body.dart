@@ -1,10 +1,13 @@
+import 'package:alquran/core/cubits/quran_cubit/quran_cubit.dart';
+import 'package:alquran/core/functions/dummy_data.dart';
 import 'package:alquran/core/widgets/search_text_field.dart';
-import 'package:alquran/features/quran/presentation/manager/cubit/quran_cubit.dart';
 import 'package:alquran/features/quran/presentation/views/widgets/quran_filter_widget.dart';
 import 'package:alquran/features/quran/presentation/views/widgets/quran_surah_sliver_list.dart';
 import 'package:alquran/features/quran/presentation/views/widgets/screen_header.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:get/get.dart';
+import 'package:skeletonizer/skeletonizer.dart';
 
 class QuranViewBody extends StatelessWidget {
   QuranViewBody({super.key});
@@ -22,7 +25,11 @@ class QuranViewBody extends StatelessWidget {
               children: [
                 SizedBox(height: 2),
                 ScreenHeader(),
-                SearchTextField(),
+                SearchTextField(
+                  onChanged: (value) {
+                    context.read<QuranCubit>().search(value);
+                  },
+                ),
                 QuranFilterWidget(filterTxt: filterTxt),
                 SizedBox(height: 5),
               ],
@@ -32,20 +39,26 @@ class QuranViewBody extends StatelessWidget {
         BlocBuilder<QuranCubit, QuranState>(
           builder: (context, state) {
             if (state is QuranLoading) {
-              return SliverToBoxAdapter(child: CircularProgressIndicator());
+              return Skeletonizer.sliver(
+                child: QuranSurahSliverList(surahs: [getDummyData()]),
+              );
             }
             if (state is QuranFailed) {
-              return SliverToBoxAdapter(child: Text(state.error));
+              return SliverToBoxAdapter(
+                child: Center(child: Text(state.error.tr)),
+              );
             }
             if (state is QuranSuccess) {
               return QuranSurahSliverList(surahs: state.surahs);
             }
-            return SliverToBoxAdapter(child: Text('Something went wrong'));
+            return SliverToBoxAdapter(
+              child: Center(child: Text('Something went wrong'.tr)),
+            );
           },
         ),
       ],
     );
   }
 
-  final List<String> filterTxt = ['سورة', 'جزء', 'المحفوظ'];
+  final List<String> filterTxt = ['سورة', 'المفضلة'];
 }

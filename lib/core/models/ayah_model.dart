@@ -1,4 +1,4 @@
-import 'package:alquran/features/quran/domain/entities/ayah_entity.dart';
+import 'package:alquran/core/entities/ayah_entity.dart';
 
 class Ayah {
   int number;
@@ -9,6 +9,7 @@ class Ayah {
   int page;
   int ruku;
   int hizbQuarter;
+  String? audioUrl;
   dynamic sajda;
 
   Ayah({
@@ -21,6 +22,7 @@ class Ayah {
     required this.ruku,
     required this.hizbQuarter,
     required this.sajda,
+    this.audioUrl,
   });
 
   factory Ayah.fromJson(Map<String, dynamic> json) => Ayah(
@@ -33,6 +35,7 @@ class Ayah {
     ruku: json["ruku"],
     hizbQuarter: json["hizbQuarter"],
     sajda: json["sajda"],
+    audioUrl: json["audioUrl"],
   );
 
   AyahEntity toAyahEntity() {
@@ -46,6 +49,7 @@ class Ayah {
       ruku: ruku,
       hizbQuarter: hizbQuarter,
       sajda: sajda,
+      audioUrl: audioUrl,
     );
   }
 

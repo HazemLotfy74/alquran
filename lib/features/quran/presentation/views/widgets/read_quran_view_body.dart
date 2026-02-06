@@ -1,9 +1,9 @@
-import 'package:alquran/features/quran/domain/entities/surah_entity.dart';
 import 'package:alquran/features/quran/presentation/views/widgets/custom_button.dart';
 import 'package:alquran/features/quran/presentation/views/widgets/quran_text_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
+import '../../../../../core/entities/surah_entity.dart';
 import '../../../../../generated/assets.dart';
 
 class ReadQuranViewBody extends StatefulWidget {

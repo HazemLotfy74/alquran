@@ -23,12 +23,18 @@ class ApiService {
     }
   }
 
-  Future<Map<String, dynamic>> getSurahNumber({required int number}) async {
+  Future<Map<String, dynamic>> getAudio({
+    required int surahNumber,
+    required int reciterID,
+  }) async {
     try {
-      final response = await http.get(Uri.parse('${ApiUrl.surahApi}/$number'));
+      final response = await http.get(
+        Uri.parse('${ApiUrl.surahAudioApi}$reciterID/$surahNumber'),
+      );
       if (response.statusCode == 200) {
         final data = jsonDecode(response.body);
-        return data['data'];
+        log(data.toString());
+        return data;
       } else {
         throw CustomException(message: 'Failed to load surah'.tr);
       }

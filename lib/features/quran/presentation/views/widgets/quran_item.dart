@@ -1,11 +1,12 @@
 import 'package:alquran/core/functions/on_generate_route.dart';
 import 'package:alquran/core/utils/app_colors.dart';
 import 'package:alquran/core/utils/app_text_style.dart';
-import 'package:alquran/features/quran/domain/entities/surah_entity.dart';
 import 'package:alquran/generated/assets.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
+
+import '../../../../../core/entities/surah_entity.dart';
 
 class QuranItem extends StatelessWidget {
   const QuranItem({super.key, required this.surah});
@@ -40,17 +41,13 @@ class QuranItem extends StatelessWidget {
             ],
           ),
           title: Text(surah.name, style: AppTextStyle.bold15),
-          subtitle: Text(
-            'عدد الايات : ${surah.ayahs.length}',
-            style: AppTextStyle.regular13,
-          ),
-          trailing: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
+          subtitle: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
-                surah.englishName,
-                style: AppTextStyle.bold15.copyWith(
-                  color: AppColors.primaryColor,
+                'عدد الايات : ${surah.ayahs.length}',
+                style: AppTextStyle.regular13.copyWith(
+                  color: AppColors.greyColor3,
                 ),
               ),
               Text(
@@ -60,6 +57,10 @@ class QuranItem extends StatelessWidget {
                 ),
               ),
             ],
+          ),
+          trailing: Text(
+            surah.englishName,
+            style: AppTextStyle.bold15.copyWith(color: AppColors.primaryColor),
           ),
         ),
       ),

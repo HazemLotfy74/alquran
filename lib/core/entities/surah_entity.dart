@@ -1,8 +1,9 @@
-import 'package:alquran/features/quran/domain/entities/ayah_entity.dart';
+import 'package:alquran/core/entities/ayah_entity.dart';
+import 'package:equatable/equatable.dart';
 
-import '../../../../core/enums/RevelationType.dart';
+import '../../../../core/enums/revelation_type.dart';
 
-class SurahEntity {
+class SurahEntity extends Equatable {
   final int number;
   final String name;
   final String englishName;
@@ -10,7 +11,7 @@ class SurahEntity {
   final RevelationType revelationType;
   final List<AyahEntity> ayahs;
 
-  SurahEntity({
+  const SurahEntity({
     required this.number,
     required this.name,
     required this.englishName,
@@ -18,4 +19,7 @@ class SurahEntity {
     required this.revelationType,
     required this.ayahs,
   });
+
+  @override
+  List<Object?> get props => [number];
 }
