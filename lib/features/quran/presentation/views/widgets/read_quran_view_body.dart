@@ -29,6 +29,7 @@ class _ReadQuranViewBodyState extends State<ReadQuranViewBody> {
             QuranTextWidget(
               fontSizeChanged: fontSize,
               ayah: widget.surahEntity.ayahs,
+              surahNumber: widget.surahEntity.number,
             ),
             SizedBox(height: 20),
             Row(

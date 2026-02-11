@@ -58,13 +58,14 @@ class _ListenToQuranViewBodyState extends State<ListenToQuranViewBody> {
                       },
                     ),
                     Spacer(),
+                    SizedBox(height: 20),
                     BlocBuilder<QuranCubit, QuranState>(
                       builder: (context, state) {
                         final surah = context.read<QuranCubit>().surahs;
                         return CustomBottomSheet(surah: surah);
                       },
                     ),
-                    SizedBox(height: 30),
+                    SizedBox(height: 20),
                   ],
                 );
               },
