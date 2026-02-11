@@ -1,4 +1,4 @@
-import 'package:alquran/core/widgets/custom_app_bar.dart';
+import 'package:alquran/shared/widgets/custom_app_bar.dart';
 import 'package:alquran/features/quran/presentation/views/widgets/read_quran_view_body.dart';
 import 'package:flutter/material.dart';
 

@@ -47,8 +47,14 @@ class Assets {
       'assets/images/unselected_prayer_icon.svg';
   static const String imagesUnselectedTasbehIcon =
       'assets/images/unselected_tasbeh_icon.svg';
+  static const String imagesSelectedTasbehIcon =
+      'assets/images/selected_tasbeh_icon.svg';
+  static const String imagesSelectedPrayerIcon =
+      'assets/images/selected_prayer_icon.svg';
   static const String imagesVecteezyMuslimManPrayingAfterShalat7885406 =
       'assets/images/vecteezy_muslim-man-praying-after-shalat_7885406.svg';
   static const String imagesWakeAzkar = 'assets/images/wake_azkar.svg';
   static const String imagesWodoqAzkar = 'assets/images/wodoq_azkar.svg';
+  static const String imageSelectedQuran='assets/images/selected_quran_icon.svg';
+  static const String imageUnSelectedQuran='assets/images/selected_quran_icon.svg';
 }

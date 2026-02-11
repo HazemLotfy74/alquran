@@ -1,4 +1,4 @@
-import 'package:alquran/core/widgets/custom_outline_border.dart';
+import 'package:alquran/shared/widgets/custom_outline_border.dart';
 import 'package:alquran/features/listen_to_quran/domain/entities/drop_down_menu_entity.dart';
 import 'package:alquran/features/listen_to_quran/presentation/manager/audio_cubit.dart';
 import 'package:flutter/material.dart';

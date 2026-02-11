@@ -1,48 +1,75 @@
-import 'package:alquran/core/functions/on_generate_route.dart';
-import 'package:alquran/core/utils/app_colors.dart';
-import 'package:alquran/core/utils/app_text_style.dart';
-import 'package:alquran/features/azkar/domain/entities/azkar_entity.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:alquran/core/functions/on_generate_route.dart';
+import '../../../../../generated/assets.dart';
+import '../../cubit/azkar_categories_cubit.dart';
+import '../../cubit/azkar_categories_state.dart';
 
-class AzkarViewBodySliverList extends StatelessWidget {
-  const AzkarViewBodySliverList({super.key, required this.azkarType});
-
-  final List<AzkarTypeEntity> azkarType;
+class AzkarCategoriesViewBody extends StatelessWidget {
+  const AzkarCategoriesViewBody({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return SliverList.separated(
-      itemCount: azkarType.length,
-      itemBuilder: (context, index) {
-        return ListTile(
-          onTap: () {
-            Navigator.pushNamed(
-              context,
-              AppRouter.readAzkar,
-              arguments: azkarType[index],
-            );
+    return Stack(
+      children: [
+        // ✅ Background image
+        Positioned.fill(
+          child: Image.asset(
+            Assets.imagesBackground2,
+            fit: BoxFit.cover,
+          ),
+        ),
+
+        // ✅ Foreground content
+        BlocBuilder<AzkarCategoriesCubit, AzkarCategoriesState>(
+          builder: (context, state) {
+            if (state is AzkarCategoriesLoading) {
+              return const Center(child: CircularProgressIndicator());
+            }
+
+            if (state is AzkarCategoriesError) {
+              return Center(child: Text(state.message));
+            }
+
+            if (state is AzkarCategoriesLoaded) {
+              final categories = state.categories;
+
+              return CustomScrollView(
+                slivers: [
+                  SliverToBoxAdapter(
+                    child: Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 16),
+                    ),
+                  ),
+                  SliverList.builder(
+                    itemCount: categories.length,
+                    itemBuilder: (context, index) {
+                      final item = categories[index];
+
+                      return ListTile(
+                        tileColor: Colors.white.withOpacity(0.8), // optional
+                        title: Text(
+                          item.title,
+                          textDirection: TextDirection.rtl,
+                        ),
+                        onTap: () {
+                          Navigator.pushNamed(
+                            context,
+                            AppRouter.readAzkar,
+                            arguments: item.id,
+                          );
+                        },
+                      );
+                    },
+                  ),
+                ],
+              );
+            }
+
+            return const SizedBox.shrink();
           },
-          leading: SvgPicture.asset(
-            azkarType[index].image,
-            width: 40,
-            height: 40,
-          ),
-          title: Text(azkarType[index].title, style: AppTextStyle.medium15),
-          subtitle: Text(
-            "عدد الاذكار: ${azkarType[index].totalNumber.toString()}",
-            style: AppTextStyle.regular13.copyWith(color: AppColors.greyColor3),
-          ),
-          trailing: Icon(
-            Icons.arrow_forward_ios_outlined,
-            size: 15,
-            color: Colors.grey,
-          ),
-        );
-      },
-      separatorBuilder: (BuildContext context, int index) {
-        return Divider(height: 1, color: Colors.grey.shade200);
-      },
+        ),
+      ],
     );
   }
 }

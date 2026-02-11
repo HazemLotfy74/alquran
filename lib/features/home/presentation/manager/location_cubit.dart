@@ -1,5 +1,5 @@
 import 'package:alquran/core/entities/location_entity.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:bloc/bloc.dart';
 
 import '../../../../core/services/location_service.dart';
 

@@ -1,11 +1,12 @@
 import 'package:alquran/core/cubits/quran_cubit/quran_cubit.dart';
 import 'package:alquran/core/utils/app_colors.dart';
 import 'package:alquran/core/utils/app_text_style.dart';
-import 'package:alquran/core/widgets/search_text_field.dart';
 import 'package:alquran/features/listen_to_quran/presentation/manager/audio_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get/get.dart';
+
+import '../../../../../shared/widgets/search_text_field.dart';
 
 class SurahListBottomSheet extends StatelessWidget {
   const SurahListBottomSheet({super.key});
