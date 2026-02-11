@@ -2,6 +2,8 @@
 class Assets {
   Assets._();
 
+  static const String fontsAmiriBold = 'assets/fonts/Amiri-Bold.ttf';
+  static const String fontsAmiriRegular = 'assets/fonts/Amiri-Regular.ttf';
   static const String fontsPoppinsBold = 'assets/fonts/Poppins-Bold.ttf';
   static const String fontsPoppinsMedium = 'assets/fonts/Poppins-Medium.ttf';
   static const String fontsPoppinsRegular = 'assets/fonts/Poppins-Regular.ttf';

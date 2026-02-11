@@ -64,7 +64,7 @@ class _ReadAzkarViewBodyState extends State<ReadAzkarViewBody> {
         ),
         AzkarCounterWidget(
           pageController: pageController,
-          currentIndex: currentIndex,
+          index: currentIndex,
           totalZekr: totalAzkar,
         ),
       ],

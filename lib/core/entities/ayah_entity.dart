@@ -1,13 +1,26 @@
+import 'package:hive/hive.dart';
+
+part 'ayah_entity.g.dart';
+
+@HiveType(typeId: 1)
 class AyahEntity {
+  @HiveField(0)
   final int number;
+  @HiveField(1)
   final String text;
+  @HiveField(2)
   final int numberInSurah;
+  @HiveField(3)
   final int juz;
+  @HiveField(4)
   final int manzil;
+  @HiveField(5)
   final int page;
+  @HiveField(6)
   final int ruku;
+  @HiveField(7)
   final int hizbQuarter;
-  String? audioUrl;
+  @HiveField(8)
   final dynamic sajda;
 
   AyahEntity({
@@ -20,6 +33,5 @@ class AyahEntity {
     required this.ruku,
     required this.hizbQuarter,
     required this.sajda,
-    this.audioUrl,
   });
 }

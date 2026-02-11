@@ -3,14 +3,14 @@ import 'package:alquran/core/utils/app_text_style.dart';
 import 'package:flutter/material.dart';
 
 class AzkarCounterWidget extends StatefulWidget {
-  AzkarCounterWidget({
+  const AzkarCounterWidget({
     super.key,
     required this.pageController,
-    required this.currentIndex,
     required this.totalZekr,
+    required this.index,
   });
   final PageController pageController;
-  int currentIndex = 0;
+  final int index;
   final int totalZekr;
 
   @override
@@ -18,6 +18,13 @@ class AzkarCounterWidget extends StatefulWidget {
 }
 
 class _AzkarCounterWidgetState extends State<AzkarCounterWidget> {
+  late int currentIndex;
+  @override
+  void initState() {
+    super.initState();
+    currentIndex = widget.index;
+  }
+
   @override
   Widget build(BuildContext context) {
     return Card(
@@ -31,12 +38,12 @@ class _AzkarCounterWidgetState extends State<AzkarCounterWidget> {
           children: [
             FloatingActionButton.large(
               onPressed: () {
-                if (widget.currentIndex < widget.totalZekr) {
-                  widget.currentIndex++;
+                if (currentIndex < widget.totalZekr) {
+                  currentIndex++;
                   setState(() {});
                 }
-                if (widget.currentIndex == widget.totalZekr) {
-                  widget.currentIndex = 0;
+                if (currentIndex == widget.totalZekr) {
+                  currentIndex = 0;
                   widget.pageController.nextPage(
                     duration: Duration(milliseconds: 300),
                     curve: Curves.easeIn,
@@ -50,7 +57,7 @@ class _AzkarCounterWidgetState extends State<AzkarCounterWidget> {
                 TextSpan(
                   children: [
                     TextSpan(
-                      text: widget.currentIndex.toString(),
+                      text: currentIndex.toString(),
                       style: AppTextStyle.semiBold18.copyWith(
                         color: Colors.white,
                         fontSize: 30,
@@ -76,8 +83,8 @@ class _AzkarCounterWidgetState extends State<AzkarCounterWidget> {
               children: [
                 IconButton(
                   onPressed: () {
-                    if (widget.currentIndex > 0) {
-                      widget.currentIndex = 0;
+                    if (currentIndex > 0) {
+                      currentIndex = 0;
                       setState(() {});
                     }
                     widget.pageController.nextPage(
@@ -94,8 +101,8 @@ class _AzkarCounterWidgetState extends State<AzkarCounterWidget> {
                 ),
                 IconButton(
                   onPressed: () {
-                    if (widget.currentIndex > 0) {
-                      widget.currentIndex = 0;
+                    if (currentIndex > 0) {
+                      currentIndex = 0;
                       setState(() {});
                     }
                     widget.pageController.previousPage(

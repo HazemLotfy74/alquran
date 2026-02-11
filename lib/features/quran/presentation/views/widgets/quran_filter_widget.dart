@@ -37,13 +37,14 @@ class _QuranFilterWidgetState extends State<QuranFilterWidget> {
           return ValueListenableBuilder(
             valueListenable: selectedIndex,
             builder: (context, value, child) {
+              final cubit = context.read<QuranCubit>();
               return GestureDetector(
                 onTap: () {
                   selectedIndex.value = index;
                   if (index == 0) {
-                    context.read<QuranCubit>().getSurahs();
+                    cubit.toggleFavorites(false);
                   } else {
-                    context.read<QuranCubit>().getFavoriteSurahs();
+                    cubit.toggleFavorites(true);
                   }
                 },
                 child: AnimatedFilterItem(
