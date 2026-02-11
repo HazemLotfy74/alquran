@@ -2,9 +2,9 @@ import 'package:alquran/core/utils/app_text_style.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
+import '../../core/utils/app_colors.dart';
 import '../../generated/assets.dart';
-import '../utils/app_colors.dart';
-import 'custom_outline_border.dart';
+import '../../shared/widgets/custom_outline_border.dart';
 
 class SearchTextField extends StatelessWidget {
   const SearchTextField({

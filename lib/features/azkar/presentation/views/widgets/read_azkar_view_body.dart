@@ -1,12 +1,12 @@
-import 'package:alquran/core/utils/app_text_style.dart';
-import 'package:alquran/features/azkar/domain/entities/azkar_entity.dart';
-import 'package:alquran/features/azkar/presentation/views/widgets/azkar_counter_widget.dart';
-import 'package:alquran/generated/assets.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:alquran/generated/assets.dart';
+import '../../cubit/azkar_cubit.dart';
+import '../../cubit/azkar_state.dart';
+import 'azkar_counter_widget.dart';
 
 class ReadAzkarViewBody extends StatefulWidget {
-  const ReadAzkarViewBody({super.key, required this.azkar});
-  final AzkarTypeEntity azkar;
+  const ReadAzkarViewBody({super.key});
 
   @override
   State<ReadAzkarViewBody> createState() => _ReadAzkarViewBodyState();
@@ -17,55 +17,82 @@ class _ReadAzkarViewBodyState extends State<ReadAzkarViewBody> {
 
   final PageController pageController = PageController();
 
-  final int totalAzkar = 10;
+  @override
+  void dispose() {
+    pageController.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
     return Column(
       children: [
         Expanded(
-          child: PageView.builder(
-            itemCount: widget.azkar.totalNumber,
-            controller: pageController,
-            itemBuilder: (context, index) {
-              return Stack(
-                children: [
-                  Positioned.fill(
-                    child: Image.asset(
-                      Assets.imagesBackground2,
-                      fit: BoxFit.fill,
-                    ),
-                  ),
-                  Positioned(
-                    right: 0,
-                    child: Padding(
-                      padding: const EdgeInsets.symmetric(
-                        horizontal: 13,
-                        vertical: 25,
-                      ),
-                      child: Column(
-                        children: [
-                          Text(
-                            'استغفر الله العظيم',
-                            style: AppTextStyle.semiBold18,
+          child: BlocBuilder<AzkarCubit, AzkarState>(
+            builder: (context, state) {
+              if (state is AzkarLoading) {
+                return const Center(child: CircularProgressIndicator());
+              }
+
+              if (state is AzkarError) {
+                return Center(child: Text(state.message));
+              }
+
+              if (state is AzkarLoaded) {
+                final azkarList = state.data.azkar;
+
+                return PageView.builder(
+                  controller: pageController,
+                  itemCount: azkarList.length,
+                  onPageChanged: (i) => setState(() => currentIndex = i),
+                  itemBuilder: (context, index) {
+                    final zekr = azkarList[index];
+
+                    return Stack(
+                      children: [
+                        Positioned.fill(
+                          child: Image.asset(
+                            Assets.imagesBackground2,
+                            fit: BoxFit.fill,
                           ),
-                          Text(
-                            'استغفر الله العظيم',
-                            style: AppTextStyle.semiBold18,
+                        ),
+                        SafeArea(
+                          child: Padding(
+                            padding: const EdgeInsets.symmetric(
+                              horizontal: 13,
+                              vertical: 25,
+                            ),
+                            child: Align(
+                              alignment: Alignment.topRight,
+                              child: Text(
+                                zekr.arabicText,
+                                textDirection: TextDirection.rtl,
+                              ),
+                            ),
                           ),
-                        ],
-                      ),
-                    ),
-                  ),
-                ],
-              );
+                        ),
+                      ],
+                    );
+                  },
+                );
+              }
+
+              // initial state before fetching
+              return const SizedBox.shrink();
             },
           ),
         ),
-        AzkarCounterWidget(
-          pageController: pageController,
-          currentIndex: currentIndex,
-          totalZekr: totalAzkar,
+
+        BlocBuilder<AzkarCubit, AzkarState>(
+          builder: (context, state) {
+            final total = (state is AzkarLoaded) ? state.data.azkar.length : 0;
+
+            return AzkarCounterWidget(
+              pageController: pageController,
+              currentIndex: currentIndex,
+              totalZekr: total,
+            );
+          },
         ),
       ],
     );

@@ -1,5 +1,5 @@
 import 'package:alquran/features/quran/domain/repo/quran_repo.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:bloc/bloc.dart';
 
 import '../../entities/surah_entity.dart';
 import '../../utils/arabic_text_normalize.dart';

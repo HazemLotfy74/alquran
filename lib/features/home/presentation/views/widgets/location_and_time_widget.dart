@@ -3,7 +3,6 @@ import 'package:alquran/features/home/presentation/views/widgets/date_and_live_t
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:hijri/hijri_calendar.dart';
-
 import '../../../../../core/utils/app_colors.dart';
 import '../../../../../core/utils/app_text_style.dart';
 import 'location_widget.dart';

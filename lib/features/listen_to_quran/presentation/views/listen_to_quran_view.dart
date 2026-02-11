@@ -1,7 +1,7 @@
 import 'package:alquran/core/cubits/quran_cubit/quran_cubit.dart';
 import 'package:alquran/core/services/audio_service.dart';
 import 'package:alquran/core/services/get_it_service.dart';
-import 'package:alquran/core/widgets/custom_app_bar.dart';
+import 'package:alquran/shared/widgets/custom_app_bar.dart';
 import 'package:alquran/features/listen_to_quran/domain/repo/audio_repo.dart';
 import 'package:alquran/features/listen_to_quran/presentation/manager/audio_cubit.dart';
 import 'package:alquran/features/listen_to_quran/presentation/views/widgets/listen_to_quran_view_body.dart';
