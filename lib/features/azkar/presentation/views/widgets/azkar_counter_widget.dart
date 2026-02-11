@@ -7,10 +7,10 @@ class AzkarCounterWidget extends StatefulWidget {
     super.key,
     required this.pageController,
     required this.totalZekr,
-    required this.index,
+    required this.currentIndex,
   });
   final PageController pageController;
-  final int index;
+  final int currentIndex;
   final int totalZekr;
 
   @override
@@ -22,7 +22,7 @@ class _AzkarCounterWidgetState extends State<AzkarCounterWidget> {
   @override
   void initState() {
     super.initState();
-    currentIndex = widget.index;
+    currentIndex = widget.currentIndex;
   }
 
   @override

@@ -1,5 +1,4 @@
 import 'package:alquran/core/utils/app_colors.dart';
-import 'package:alquran/core/widgets/custom_app_bar.dart';
 import 'package:alquran/features/quran/presentation/views/widgets/read_quran_view_body.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';

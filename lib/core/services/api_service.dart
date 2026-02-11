@@ -8,6 +8,7 @@ import 'package:http/http.dart' as http;
 import '../errors/exception.dart';
 
 class ApiService {
+  // ================== Get Surah ==================
   Future<List<dynamic>> getQuran() async {
     try {
       final response = await http.get(Uri.parse(ApiUrl.quranApi));
@@ -23,6 +24,7 @@ class ApiService {
     }
   }
 
+  // ================== Get Audio ==================
   Future<Map<String, dynamic>> getAudio({
     required int surahNumber,
     required int reciterID,

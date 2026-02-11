@@ -1,6 +1,5 @@
 import 'package:alquran/core/cubits/quran_cubit/quran_cubit.dart';
 import 'package:alquran/core/functions/dummy_data.dart';
-import 'package:alquran/core/widgets/search_text_field.dart';
 import 'package:alquran/features/quran/presentation/views/widgets/quran_filter_widget.dart';
 import 'package:alquran/features/quran/presentation/views/widgets/quran_surah_sliver_list.dart';
 import 'package:alquran/features/quran/presentation/views/widgets/screen_header.dart';
@@ -8,6 +7,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get/get.dart';
 import 'package:skeletonizer/skeletonizer.dart';
+import '../../../../../shared/widgets/search_text_field.dart';
 
 class QuranViewBody extends StatelessWidget {
   QuranViewBody({super.key});

@@ -1,6 +1,6 @@
 import 'package:alquran/core/services/local_storage_service.dart';
 import 'package:alquran/features/quran/domain/repo/quran_repo.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:bloc/bloc.dart';
 
 import '../../../constants/storage_keys.dart';
 import '../../entities/surah_entity.dart';
