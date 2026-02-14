@@ -34,10 +34,10 @@ class HiveService implements LocalStorageService {
     if (!Hive.isAdapterRegistered(0)) {
       Hive.registerAdapter(SurahEntityAdapter());
     }
-
     if (!Hive.isAdapterRegistered(1)) {
       Hive.registerAdapter(AyahEntityAdapter());
     }
+
     if (!Hive.isAdapterRegistered(2)) {
       Hive.registerAdapter(RevelationTypeAdapter());
     }

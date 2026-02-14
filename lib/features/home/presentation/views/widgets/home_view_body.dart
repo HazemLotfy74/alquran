@@ -3,6 +3,8 @@ import 'package:alquran/features/home/presentation/views/widgets/location_and_ti
 import 'package:alquran/generated/assets.dart';
 import 'package:flutter/material.dart';
 
+import 'continue_reading_widget.dart';
+
 class HomeViewBody extends StatelessWidget {
   const HomeViewBody({super.key});
 
@@ -18,7 +20,11 @@ class HomeViewBody extends StatelessWidget {
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 13, vertical: 25),
             child: CustomScrollView(
-              slivers: [LocationAndTimeWidget(), HomeViewBodySliverGrid()],
+              slivers: [
+                LocationAndTimeWidget(),
+                ContinueReadingWidget(),
+                HomeViewBodySliverGrid(),
+              ],
             ),
           ),
         ],

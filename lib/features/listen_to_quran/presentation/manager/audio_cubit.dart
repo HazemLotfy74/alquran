@@ -99,16 +99,13 @@ class AudioCubit extends Cubit<AudioState> {
     final next = quranCubit.nextSurah;
 
     if (next != null) {
-      // اختار السورة اللي بعدها
       quranCubit.selectSurah(next);
 
-      // هات صوتها
       await getAudio(surahNumber: next.number);
 
       return;
     }
 
-    // لو مفيش سورة بعد كده (آخر المصحف)
     await audioService.seek(Duration.zero);
 
     emit(state.copyWith(isPlaying: false, position: Duration.zero));
