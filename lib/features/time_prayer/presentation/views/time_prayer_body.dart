@@ -45,7 +45,13 @@ class TimePrayerBody extends StatelessWidget {
                   );
                 }
 
-                // Loading state
+                if (state is PrayerTimesError) {
+                  return Center(
+                    child: Text(state.message, textAlign: TextAlign.center),
+                  );
+                }
+
+                // Loading / initial
                 return const Center(child: CircularProgressIndicator());
               },
             ),
