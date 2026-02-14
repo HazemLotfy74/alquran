@@ -1,10 +1,11 @@
-import 'package:alquran/core/utils/app_colors.dart';
+import 'package:alquran/core/cubits/quran_cubit/quran_cubit.dart';
 import 'package:alquran/features/quran/presentation/views/widgets/read_quran_view_body.dart';
+import 'package:alquran/shared/widgets/custom_app_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../../../../core/cubits/quran_cubit/quran_cubit.dart';
 import '../../../../core/entities/surah_entity.dart';
+import '../../../../core/utils/app_colors.dart';
 
 class ReadQuranView extends StatefulWidget {
   const ReadQuranView({super.key, required this.surah});

@@ -1,4 +1,5 @@
 import 'package:alquran/core/services/local_storage_service.dart';
+import 'package:alquran/features/quran/data/models/last_read_model.dart';
 import 'package:alquran/features/quran/domain/repo/quran_repo.dart';
 import 'package:bloc/bloc.dart';
 
@@ -17,13 +18,19 @@ class QuranCubit extends Cubit<QuranState> {
     localStorageService.get<dynamic>(StorageKeys.lastRead, StorageKeys.surah);
 
     localStorageService.get<dynamic>(StorageKeys.lastRead, StorageKeys.ayah);
+    localStorageService.get<dynamic>(
+      StorageKeys.lastRead,
+      StorageKeys.fontSize,
+    );
+    _loadLastReadOnStartup();
   }
+
   final QuranRepo quranRepo;
   final LocalStorageService localStorageService;
   final List<SurahEntity> surahs = [];
   final List<SurahEntity> favoriteSurahs = [];
   SurahEntity? selectedSurah;
-
+  LastReadModel? lastReadModel;
   static const favoritesBox = 'favorites';
 
   bool showFavorites = false;
@@ -96,26 +103,66 @@ class QuranCubit extends Cubit<QuranState> {
     emit(QuranSuccess(surahs: List.from(surahs)));
   }
 
-  Future<void> saveLastRead(
-    int surahNumber,
-    int ayahNumber,
-    double scrollOffset,
-  ) async {
+  Future<void> saveLastRead({
+    required SurahEntity surahEntity,
+    required int ayahNumber,
+    required double scrollOffset,
+    required double fontSize,
+  }) async {
     await localStorageService.put<dynamic>(
       StorageKeys.lastRead,
       StorageKeys.surah,
-      surahNumber,
+      surahEntity,
+    );
+    await localStorageService.put<dynamic>(
+      StorageKeys.lastRead,
+      'ayah_${surahEntity.number}',
+      ayahNumber,
     );
 
     await localStorageService.put<dynamic>(
       StorageKeys.lastRead,
-      StorageKeys.ayah,
-      ayahNumber,
+      'offset_${surahEntity.number}',
+      scrollOffset,
     );
+
     await localStorageService.put<dynamic>(
       StorageKeys.lastRead,
-      StorageKeys.scrollOffset,
-      scrollOffset,
+      StorageKeys.fontSize,
+      fontSize,
+    );
+    emit(QuranSuccess(surahs: List.from(surahs)));
+  }
+
+  void loadLastRead({required SurahEntity surahEntity}) {
+    final ayah =
+        localStorageService.get<dynamic>(
+          StorageKeys.lastRead,
+          'ayah_${surahEntity.number}',
+        ) ??
+        1;
+
+    final offset =
+        (localStorageService.get<dynamic>(
+                  StorageKeys.lastRead,
+                  'offset_${surahEntity.number}',
+                ) ??
+                0)
+            .toDouble();
+
+    final fontSize =
+        (localStorageService.get<dynamic>(
+                  StorageKeys.lastRead,
+                  StorageKeys.fontSize,
+                ) ??
+                20)
+            .toDouble();
+
+    lastReadModel = LastReadModel(
+      surahEntity: surahEntity,
+      ayahNumber: ayah,
+      scrollOffset: offset,
+      fontSize: fontSize,
     );
   }
 
@@ -143,5 +190,43 @@ class QuranCubit extends Cubit<QuranState> {
       return null;
     }
     return surahs[currentIndex - 1];
+  }
+
+  void _loadLastReadOnStartup() {
+    final surah = localStorageService.get<dynamic>(
+      StorageKeys.lastRead,
+      StorageKeys.surah,
+    );
+
+    if (surah == null) return;
+
+    final ayah =
+        localStorageService.get<dynamic>(StorageKeys.lastRead, 'ayah_$surah') ??
+        1;
+
+    final offset =
+        (localStorageService.get<dynamic>(
+                  StorageKeys.lastRead,
+                  'offset_$surah',
+                ) ??
+                0)
+            .toDouble();
+
+    final fontSize =
+        (localStorageService.get<dynamic>(
+                  StorageKeys.lastRead,
+                  StorageKeys.fontSize,
+                ) ??
+                20)
+            .toDouble();
+
+    lastReadModel = LastReadModel(
+      ayahNumber: ayah,
+      scrollOffset: offset,
+      fontSize: fontSize,
+      surahEntity: surah,
+    );
+
+    emit(QuranSuccess(surahs: List.from(surahs)));
   }
 }

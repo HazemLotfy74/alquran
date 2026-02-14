@@ -1,8 +1,9 @@
 import 'package:alquran/core/entities/ayah_entity.dart';
+import 'package:alquran/core/entities/surah_entity.dart';
+import 'package:alquran/features/quran/presentation/views/widgets/ayah_text_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../../../../../constants/storage_keys.dart';
 import '../../../../../core/cubits/quran_cubit/quran_cubit.dart';
 
 class QuranTextWidget extends StatefulWidget {
@@ -10,11 +11,12 @@ class QuranTextWidget extends StatefulWidget {
     super.key,
     required this.fontSizeChanged,
     required this.ayah,
-    required this.surahNumber,
+    required this.surahEntity,
   });
+
   final ValueNotifier<double> fontSizeChanged;
   final List<AyahEntity> ayah;
-  final int surahNumber;
+  final SurahEntity surahEntity;
 
   @override
   State<QuranTextWidget> createState() => _QuranTextWidgetState();
@@ -32,45 +34,49 @@ class _QuranTextWidgetState extends State<QuranTextWidget> {
     super.initState();
     ayahKeys = List.generate(widget.ayah.length, (index) => GlobalKey());
     cubit = context.read<QuranCubit>();
+    cubit.loadLastRead(surahEntity: widget.surahEntity);
     scrollController = ScrollController();
 
     scrollController.addListener(() {
       lastOffset = scrollController.offset;
-      for (int i = 0; i < ayahKeys.length; i++) {
-        final context = ayahKeys[i].currentContext;
-        if (context == null) continue;
-        final box = context.findRenderObject() as RenderBox;
-        final position = box.localToGlobal(Offset.zero);
+      getAyahScrollOffset();
+    });
 
-        if (position.dy > 0) {
-          currentAyah = widget.ayah[i].numberInSurah;
-          break;
-        }
+    final lastRead = cubit.lastReadModel;
+
+    if (lastRead != null) {
+      currentAyah = lastRead.ayahNumber;
+      widget.fontSizeChanged.value = lastRead.fontSize;
+
+      WidgetsBinding.instance.addPostFrameCallback((_) {
+        scrollController.jumpTo(lastRead.scrollOffset);
+      });
+    }
+  }
+
+  void getAyahScrollOffset() {
+    for (int i = 0; i < ayahKeys.length; i++) {
+      final context = ayahKeys[i].currentContext;
+      if (context == null) continue;
+      final box = context.findRenderObject() as RenderBox;
+      final position = box.localToGlobal(Offset.zero);
+
+      if (position.dy > 0) {
+        currentAyah = widget.ayah[i].numberInSurah;
+        break;
       }
-    });
-
-    final offset =
-        (cubit.localStorageService.get(
-                  StorageKeys.lastRead,
-                  StorageKeys.scrollOffset,
-                ) ??
-                0)
-            .toDouble();
-
-    WidgetsBinding.instance.addPostFrameCallback((_) {
-      scrollController.jumpTo(offset);
-    });
-    currentAyah =
-        cubit.localStorageService.get<dynamic>(
-          StorageKeys.lastRead,
-          StorageKeys.ayah,
-        ) ??
-        1;
+    }
   }
 
   @override
   void dispose() {
-    cubit.saveLastRead(widget.surahNumber, currentAyah, lastOffset);
+    cubit.saveLastRead(
+      ayahNumber: currentAyah,
+      scrollOffset: lastOffset,
+      fontSize: widget.fontSizeChanged.value,
+      surahEntity: widget.surahEntity,
+    );
+
     scrollController.dispose();
     super.dispose();
   }
@@ -100,43 +106,10 @@ class _QuranTextWidgetState extends State<QuranTextWidget> {
             child: ValueListenableBuilder(
               valueListenable: widget.fontSizeChanged,
               builder: (context, value, child) {
-                return Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: List.generate(widget.ayah.length, (index) {
-                    final ayah = widget.ayah[index];
-                    final hasSajda = ayah.sajda != false && ayah.sajda != null;
-                    return Container(
-                      key: ayahKeys[index],
-                      padding: const EdgeInsets.only(bottom: 8),
-                      child: RichText(
-                        textDirection: TextDirection.rtl,
-                        text: TextSpan(
-                          children: [
-                            TextSpan(
-                              text: '${ayah.text} ',
-                              style: TextStyle(
-                                fontSize: widget.fontSizeChanged.value,
-                                height: 2,
-                                color: Colors.black,
-                                fontFamily: 'Amiri',
-                                decoration: hasSajda
-                                    ? TextDecoration.underline
-                                    : TextDecoration.none,
-                              ),
-                            ),
-                            TextSpan(
-                              text: '﴿${_toArabicNumber(ayah.numberInSurah)}﴾ ',
-                              style: TextStyle(
-                                fontSize: widget.fontSizeChanged.value - 4,
-                                color: Colors.black54,
-                                fontFamily: 'Amiri',
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
-                    );
-                  }),
+                return AyahTextWidget(
+                  ayahs: widget.ayah,
+                  ayahKeys: ayahKeys,
+                  fontSize: widget.fontSizeChanged.value,
                 );
               },
             ),
@@ -144,14 +117,5 @@ class _QuranTextWidgetState extends State<QuranTextWidget> {
         ),
       ),
     );
-  }
-
-  String _toArabicNumber(int number) {
-    const arabicNumbers = ['٠', '١', '٢', '٣', '٤', '٥', '٦', '٧', '٨', '٩'];
-    return number
-        .toString()
-        .split('')
-        .map((e) => arabicNumbers[int.parse(e)])
-        .join();
   }
 }

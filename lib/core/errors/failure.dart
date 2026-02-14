@@ -7,3 +7,7 @@ abstract class Failure {
 class ServerFailure extends Failure {
   ServerFailure(super.message);
 }
+
+class DownloadFailure extends Failure {
+  DownloadFailure(super.message);
+}

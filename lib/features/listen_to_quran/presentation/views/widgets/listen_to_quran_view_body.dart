@@ -17,6 +17,7 @@ class ListenToQuranViewBody extends StatefulWidget {
 
 class _ListenToQuranViewBodyState extends State<ListenToQuranViewBody> {
   ValueNotifier<int> reciterID = ValueNotifier(2);
+  ValueNotifier<String> reciterName = ValueNotifier('عبد الباسط عبد الصمد');
   @override
   Widget build(BuildContext context) {
     return CustomScrollView(
@@ -34,6 +35,9 @@ class _ListenToQuranViewBodyState extends State<ListenToQuranViewBody> {
                     CustomDropDownMenuButton(
                       reciterId: (value) {
                         reciterID.value = value;
+                      },
+                      reciterName: (String value) {
+                        reciterName.value = value;
                       },
                     ),
                     SizedBox(height: 20),
@@ -54,6 +58,8 @@ class _ListenToQuranViewBodyState extends State<ListenToQuranViewBody> {
                         return AudioControls(
                           surahNumber: surah?.number ?? 1,
                           reciterID: reciterID.value,
+                          surahName: surah?.name ?? '',
+                          reciterName: reciterName.value,
                         );
                       },
                     ),
