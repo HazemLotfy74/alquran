@@ -42,7 +42,7 @@ class BottomNavBar extends StatelessWidget {
             width: 24,
             height: 24,
           ),
-          label: "قبلة الصلاة",
+          label: "مواعيد الصلاة",
         ),
         BottomNavigationBarItem(
           icon: SvgPicture.asset(
