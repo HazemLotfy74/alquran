@@ -21,12 +21,12 @@ class BottomNavBar extends StatelessWidget {
       items: [
         BottomNavigationBarItem(
           icon: SvgPicture.asset(
-            Assets.imagesSelectedQuranIcon,
+            Assets.imageUnSelectedQuran,
             width: 24,
             height: 24,
           ),
           activeIcon: SvgPicture.asset(
-            Assets.imagesSelectedQuranIcon,
+            Assets.imageSelectedQuran,
             width: 24,
             height: 24,
           ),
@@ -42,8 +42,7 @@ class BottomNavBar extends StatelessWidget {
             width: 24,
             height: 24,
           ),
-
-          label: "قبلة الصلاة",
+          label: "مواعيد الصلاة",
         ),
         BottomNavigationBarItem(
           icon: SvgPicture.asset(

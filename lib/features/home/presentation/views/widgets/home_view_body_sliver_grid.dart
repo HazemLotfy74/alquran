@@ -34,6 +34,12 @@ class HomeViewBodySliverGrid extends StatelessWidget {
             if (index == 0) {
               Navigator.pushNamed(context, AppRouter.quran);
             }
+            if (index == 1) {
+              Navigator.pushNamed(context, AppRouter.listenToQuran);
+            }
+            if (index == 3) {
+              Navigator.pushNamed(context, AppRouter.azkar);
+            }
           },
         );
       },

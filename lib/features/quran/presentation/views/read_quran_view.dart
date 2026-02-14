@@ -1,36 +1,50 @@
-import 'package:alquran/core/utils/app_colors.dart';
-import 'package:alquran/core/utils/app_text_style.dart';
+import 'package:alquran/core/cubits/quran_cubit/quran_cubit.dart';
 import 'package:alquran/features/quran/presentation/views/widgets/read_quran_view_body.dart';
-import 'package:alquran/generated/assets.dart';
+import 'package:alquran/shared/widgets/custom_app_bar.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
-class ReadQuranView extends StatelessWidget {
-  const ReadQuranView({super.key});
+import '../../../../core/entities/surah_entity.dart';
+import '../../../../core/utils/app_colors.dart';
 
+class ReadQuranView extends StatefulWidget {
+  const ReadQuranView({super.key, required this.surah});
+
+  final SurahEntity surah;
+
+  @override
+  State<ReadQuranView> createState() => _ReadQuranViewState();
+}
+
+class _ReadQuranViewState extends State<ReadQuranView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        leading: IconButton(
-          onPressed: () {
-            Navigator.pop(context);
-          },
-          icon: Icon(Icons.arrow_back_ios_sharp),
-        ),
-        title: Text(
-          'الفاتحة',
-          style: AppTextStyle.semiBold18.copyWith(color: AppColors.titleColor),
-        ),
-        centerTitle: true,
+      appBar: buildAppBar(
+        context: context,
+        title: widget.surah.name,
         actions: [
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 10),
-            child: SvgPicture.asset(Assets.imagesMore),
+          IconButton(
+            onPressed: () {
+              context.read<QuranCubit>().addToFavorite(widget.surah);
+            },
+            icon: Builder(
+              builder: (context) {
+                final cubit = context.watch<QuranCubit>();
+                return Icon(
+                  cubit.favoriteSurahs.contains(widget.surah)
+                      ? Icons.bookmark
+                      : Icons.bookmark_border_outlined,
+                  color: cubit.favoriteSurahs.contains(widget.surah)
+                      ? AppColors.primaryColor
+                      : Colors.grey,
+                );
+              },
+            ),
           ),
         ],
       ),
-      body: ReadQuranViewBody(),
+      body: ReadQuranViewBody(surahEntity: widget.surah),
     );
   }
 }

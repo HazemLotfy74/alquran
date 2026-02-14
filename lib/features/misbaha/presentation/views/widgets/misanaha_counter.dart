@@ -39,11 +39,17 @@ class MisbahaCounter extends StatelessWidget {
             style: AppTextStyle.bold64.copyWith(color: AppColors.titleColor),
           ),
         ),
-        const SizedBox(height: 20),
-        ElevatedButton(onPressed: onPlus, child: Icon(Icons.add)),
-        const SizedBox(height: 20),
-        ElevatedButton(onPressed: onMinus, child: Icon(Icons.remove)),
-        const SizedBox(height: 20),
+        const SizedBox(height: 35),
+        Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            ElevatedButton(onPressed: onPlus, child: Icon(Icons.add)),
+            const SizedBox(width: 20),
+            ElevatedButton(onPressed: onMinus, child: Icon(Icons.remove)),
+          ],
+        ),
+        const SizedBox(height: 25),
+
         ElevatedButton(onPressed: onReset, child: Icon(Icons.restart_alt)),
       ],
     );

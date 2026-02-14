@@ -1,9 +1,9 @@
-import 'package:alquran/features/misbaha/presentation/views/widgets/misanaha_counter.dart';
-import 'package:alquran/features/misbaha/presentation/views/widgets/misbaha_header.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../../generated/assets.dart';
 import '../cubit/sibha_cubit.dart';
+import '../../presentation/views/widgets/misanaha_counter.dart';
+import '../../presentation/views/widgets/misbaha_header.dart';
 
 class MisbahaViewBody extends StatelessWidget {
   const MisbahaViewBody({super.key});

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import 'cubit/sibha_cubit.dart';
+import '../presentation/cubit/sibha_cubit.dart';
 import 'views/misbaha_view_body.dart';
 
 class MisbahaView extends StatelessWidget {
