@@ -3,6 +3,7 @@ import 'package:alquran/core/services/api_service.dart';
 import 'package:alquran/core/services/audio_download_service.dart';
 import 'package:alquran/core/services/audio_service.dart';
 import 'package:alquran/core/services/local_storage_service.dart';
+import 'package:alquran/core/services/location_service.dart';
 import 'package:alquran/core/services/permissions_services.dart';
 import 'package:alquran/features/listen_to_quran/data/repo/audio_local_repo_imple.dart';
 import 'package:alquran/features/listen_to_quran/data/repo/audio_repo_impl.dart';
@@ -29,6 +30,7 @@ Future<void> setup() async {
   getIt.registerSingleton<AudioDownloadService>(
     AudioDownloadService(dio: Dio(), mediaStore: MediaStore()),
   );
+  getIt.registerSingleton<LocationService>(LocationService());
   getIt.registerSingleton<AudioLocalRepo>(
     AudioLocalRepoImpl(audioDownloadService: getIt.get<AudioDownloadService>()),
   );

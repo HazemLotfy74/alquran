@@ -32,6 +32,12 @@ class LocationService {
 
   Future<LocationEntity> getLocation() async {
     LocationData locationData = await location.getLocation();
+    if (locationData.longitude == null) {
+      await Future.delayed(
+        Duration(seconds: 2),
+        () async => await location.getLocation(),
+      );
+    }
     List<geo.Placemark> placemarks = await geo.placemarkFromCoordinates(
       locationData.latitude!,
       locationData.longitude!,

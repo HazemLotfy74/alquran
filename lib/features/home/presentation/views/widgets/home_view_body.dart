@@ -10,25 +10,22 @@ class HomeViewBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
-      width: double.infinity,
-      height: double.infinity,
-      child: Stack(
-        fit: StackFit.expand,
-        children: [
-          Image.asset(Assets.imagesBackground2, fit: BoxFit.fill),
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 13, vertical: 25),
-            child: CustomScrollView(
-              slivers: [
-                LocationAndTimeWidget(),
-                ContinueReadingWidget(),
-                HomeViewBodySliverGrid(),
-              ],
-            ),
+    return Stack(
+      children: [
+        Positioned.fill(
+          child: Image.asset(Assets.imagesBackground2, fit: BoxFit.fill),
+        ),
+        Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 13, vertical: 25),
+          child: CustomScrollView(
+            slivers: [
+              LocationAndTimeWidget(),
+              ContinueReadingWidget(),
+              HomeViewBodySliverGrid(),
+            ],
           ),
-        ],
-      ),
+        ),
+      ],
     );
   }
 }
