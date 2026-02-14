@@ -13,9 +13,9 @@ import 'localization/app_localization.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  await setup();
   await MediaStore.ensureInitialized();
   MediaStore.appFolder = "Quran Downloads";
-  await setup();
 
   runApp(const MyApp());
 }

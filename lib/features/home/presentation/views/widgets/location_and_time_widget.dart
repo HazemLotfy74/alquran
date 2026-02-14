@@ -1,8 +1,7 @@
-import 'package:alquran/features/home/presentation/manager/location_cubit.dart';
 import 'package:alquran/features/home/presentation/views/widgets/date_and_live_time_widget.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:hijri/hijri_calendar.dart';
+
 import '../../../../../core/utils/app_colors.dart';
 import '../../../../../core/utils/app_text_style.dart';
 import 'location_widget.dart';
@@ -18,7 +17,6 @@ class _LocationAndTimeWidgetState extends State<LocationAndTimeWidget> {
   @override
   void initState() {
     super.initState();
-    context.read<LocationCubit>().getLocation();
     HijriCalendar.setLocal("ar");
   }
 
