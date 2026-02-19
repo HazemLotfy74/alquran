@@ -1,6 +1,7 @@
 import 'package:alquran/core/entities/location_entity.dart';
 import 'package:dartz/dartz.dart';
 import 'package:geocoding/geocoding.dart' as geo;
+import 'package:get/get.dart';
 import 'package:location/location.dart';
 
 class LocationService {
@@ -12,7 +13,7 @@ class LocationService {
       if (!serviceEnabled) {
         serviceEnabled = await location.requestService();
         if (!serviceEnabled) {
-          return Left('Enable your location');
+          return Left('Enable your location'.tr);
         }
       }
 
@@ -20,17 +21,23 @@ class LocationService {
       if (permissionGranted == PermissionStatus.denied) {
         permissionGranted = await location.requestPermission();
         if (permissionGranted != PermissionStatus.granted) {
-          return Left('Location permission denied'); // Permission Denied
+          return Left('Location permission denied'.tr); // Permission Denied
         }
       }
       return Right(true);
     } catch (e) {
-      return Left('error initialize location');
+      return Left('Error initialize location'.tr);
     }
   }
 
   Future<LocationEntity> getLocation() async {
     LocationData locationData = await location.getLocation();
+    if (locationData.longitude == null) {
+      await Future.delayed(
+        Duration(seconds: 2),
+        () async => await location.getLocation(),
+      );
+    }
     List<geo.Placemark> placemarks = await geo.placemarkFromCoordinates(
       locationData.latitude!,
       locationData.longitude!,

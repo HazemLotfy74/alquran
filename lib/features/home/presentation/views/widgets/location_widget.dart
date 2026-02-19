@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:alquran/features/home/presentation/manager/location_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -36,6 +38,7 @@ class LocationWidget extends StatelessWidget {
           );
         }
         if (state is LocationSuccess) {
+          log(state.locationEntity.city ?? 'no city');
           return Row(
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
@@ -58,7 +61,7 @@ class LocationWidget extends StatelessWidget {
             ],
           );
         }
-        return Text('error');
+        return const SizedBox();
       },
     );
   }

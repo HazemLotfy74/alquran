@@ -6,13 +6,17 @@ import 'package:alquran/features/quran/domain/repo/quran_repo.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get/get_navigation/src/root/get_material_app.dart';
+import 'package:media_store_plus/media_store_plus.dart';
 
-
+import 'core/services/local_storage_service.dart';
 import 'localization/app_localization.dart';
 
-void main() {
+void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  setup();
+  await setup();
+  await MediaStore.ensureInitialized();
+  MediaStore.appFolder = "Quran Downloads";
+
   runApp(const MyApp());
 }
 
@@ -24,8 +28,10 @@ class MyApp extends StatelessWidget {
     return MultiBlocProvider(
       providers: [
         BlocProvider(
-          create: (context) =>
-              QuranCubit(quranRepo: getIt.get<QuranRepo>())..getSurahs(),
+          create: (context) => QuranCubit(
+            quranRepo: getIt.get<QuranRepo>(),
+            localStorageService: getIt.get<LocalStorageService>(),
+          )..getSurahs(),
         ),
       ],
       child: GetMaterialApp(

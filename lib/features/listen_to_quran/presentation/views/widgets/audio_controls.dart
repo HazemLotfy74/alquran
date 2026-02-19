@@ -1,8 +1,7 @@
 import 'package:alquran/core/utils/app_colors.dart';
-import 'package:alquran/generated/assets.dart';
+import 'package:alquran/features/listen_to_quran/presentation/manager/download_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 
 import '../../../../../core/cubits/quran_cubit/quran_cubit.dart';
 import '../../manager/audio_cubit.dart';
@@ -12,9 +11,13 @@ class AudioControls extends StatefulWidget {
     super.key,
     required this.surahNumber,
     required this.reciterID,
+    required this.surahName,
+    required this.reciterName,
   });
 
   final int surahNumber;
+  final String surahName;
+  final String reciterName;
   final int reciterID;
 
   @override
@@ -24,6 +27,11 @@ class AudioControls extends StatefulWidget {
 class _AudioControlsState extends State<AudioControls> {
   @override
   void initState() {
+    context.read<DownloadCubit>().checkIfDownloaded(
+      fileName:
+          '${widget.surahName}(${widget.surahNumber})-${widget.reciterName}(${widget.reciterID})',
+      reciterName: widget.reciterName,
+    );
     super.initState();
   }
 
@@ -96,7 +104,31 @@ class _AudioControlsState extends State<AudioControls> {
                 ),
               ],
             ),
-            SvgPicture.asset(Assets.imagesSetting),
+            BlocBuilder<DownloadCubit, DownloadState>(
+              builder: (context, state) {
+                if (state is DownloadSuccess) {
+                  return Icon(
+                    Icons.download_done,
+                    color: AppColors.primaryColor,
+                  );
+                }
+
+                return IconButton(
+                  onPressed: () {
+                    if (cubit.currentUrl != null) {
+                      context.read<DownloadCubit>().downloadAudio(
+                        url: cubit.currentUrl!,
+                        fileName:
+                            '${widget.surahName}(${widget.surahNumber})-${widget.reciterName}(${widget.reciterID})',
+                        reciterName: widget.reciterName,
+                      );
+                    }
+                    null;
+                  },
+                  icon: Icon(Icons.download, color: AppColors.arrowColor),
+                );
+              },
+            ),
           ],
         );
       },

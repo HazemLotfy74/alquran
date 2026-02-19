@@ -1,23 +1,45 @@
 import 'package:alquran/core/utils/app_colors.dart';
 import 'package:alquran/core/utils/app_text_style.dart';
+import 'package:alquran/features/azkar/presentation/cubit/azkar_audio_cubit.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class AzkarCounterWidget extends StatefulWidget {
-  AzkarCounterWidget({
+  const AzkarCounterWidget({
     super.key,
     required this.pageController,
-    required this.currentIndex,
     required this.totalZekr,
+    required this.currentIndex,
+    required this.audioUrl,
   });
+
   final PageController pageController;
-  int currentIndex = 0;
+  final int currentIndex;
   final int totalZekr;
+  final String audioUrl;
 
   @override
   State<AzkarCounterWidget> createState() => _AzkarCounterWidgetState();
 }
 
 class _AzkarCounterWidgetState extends State<AzkarCounterWidget> {
+  int counter = 0;
+
+  @override
+  void initState() {
+    super.initState();
+    counter = widget.currentIndex;
+  }
+
+  @override
+  void didUpdateWidget(covariant AzkarCounterWidget oldWidget) {
+    super.didUpdateWidget(oldWidget);
+
+    if (oldWidget.currentIndex != widget.currentIndex) {
+      counter = 0;
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Card(
@@ -31,12 +53,14 @@ class _AzkarCounterWidgetState extends State<AzkarCounterWidget> {
           children: [
             FloatingActionButton.large(
               onPressed: () {
-                if (widget.currentIndex < widget.totalZekr) {
-                  widget.currentIndex++;
+                if (counter < widget.totalZekr) {
+                  counter++;
                   setState(() {});
                 }
-                if (widget.currentIndex == widget.totalZekr) {
-                  widget.currentIndex = 0;
+                if (counter == widget.totalZekr) {
+                  counter = 0;
+                  if (widget.audioUrl.isEmpty) return;
+                  context.read<AzkarAudioCubit>().stopAudio();
                   widget.pageController.nextPage(
                     duration: Duration(milliseconds: 300),
                     curve: Curves.easeIn,
@@ -50,7 +74,7 @@ class _AzkarCounterWidgetState extends State<AzkarCounterWidget> {
                 TextSpan(
                   children: [
                     TextSpan(
-                      text: widget.currentIndex.toString(),
+                      text: counter.toString(),
                       style: AppTextStyle.semiBold18.copyWith(
                         color: Colors.white,
                         fontSize: 30,
@@ -72,40 +96,56 @@ class _AzkarCounterWidgetState extends State<AzkarCounterWidget> {
                 ),
               ),
             ),
-            Row(
-              children: [
-                IconButton(
-                  onPressed: () {
-                    if (widget.currentIndex > 0) {
-                      widget.currentIndex = 0;
-                      setState(() {});
-                    }
-                    widget.pageController.nextPage(
-                      duration: Duration(milliseconds: 300),
-                      curve: Curves.easeIn,
-                    );
-                  },
-                  icon: Icon(Icons.skip_next_outlined),
-                ),
-                IconButton(
-                  onPressed: () {},
-                  icon: Icon(Icons.play_circle, size: 30),
-                  color: AppColors.primaryColor,
-                ),
-                IconButton(
-                  onPressed: () {
-                    if (widget.currentIndex > 0) {
-                      widget.currentIndex = 0;
-                      setState(() {});
-                    }
-                    widget.pageController.previousPage(
-                      duration: const Duration(milliseconds: 300),
-                      curve: Curves.easeInOut,
-                    );
-                  },
-                  icon: Icon(Icons.skip_previous_outlined),
-                ),
-              ],
+            BlocBuilder<AzkarAudioCubit, AzkarAudioState>(
+              builder: (context, state) {
+                return Row(
+                  children: [
+                    IconButton(
+                      onPressed: () {
+                        if (counter > 0) {
+                          counter = 0;
+                          setState(() {});
+                        }
+                        if (widget.audioUrl.isEmpty) return;
+                        context.read<AzkarAudioCubit>().pauseAudio();
+                        widget.pageController.nextPage(
+                          duration: Duration(milliseconds: 300),
+                          curve: Curves.easeIn,
+                        );
+                      },
+                      icon: Icon(Icons.skip_next_outlined),
+                    ),
+                    IconButton(
+                      onPressed: () {
+                        if (widget.audioUrl.isEmpty) return;
+                        context.read<AzkarAudioCubit>().toggle(widget.audioUrl);
+                      },
+                      icon: Icon(
+                        state is AzkarAudioPlaying
+                            ? Icons.pause
+                            : Icons.play_arrow,
+                        size: 30,
+                      ),
+                      color: AppColors.primaryColor,
+                    ),
+                    IconButton(
+                      onPressed: () {
+                        if (counter > 0) {
+                          counter = 0;
+                          setState(() {});
+                        }
+                        if (widget.audioUrl.isEmpty) return;
+                        context.read<AzkarAudioCubit>().stopAudio();
+                        widget.pageController.previousPage(
+                          duration: const Duration(milliseconds: 300),
+                          curve: Curves.easeInOut,
+                        );
+                      },
+                      icon: Icon(Icons.skip_previous_outlined),
+                    ),
+                  ],
+                );
+              },
             ),
           ],
         ),

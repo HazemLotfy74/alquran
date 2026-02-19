@@ -1,6 +1,8 @@
+import 'package:alquran/core/utils/app_text_style.dart';
+import 'package:alquran/generated/assets.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:alquran/generated/assets.dart';
+
 import '../../cubit/azkar_cubit.dart';
 import '../../cubit/azkar_state.dart';
 import 'azkar_counter_widget.dart';
@@ -40,14 +42,17 @@ class _ReadAzkarViewBodyState extends State<ReadAzkarViewBody> {
 
               if (state is AzkarLoaded) {
                 final azkarList = state.data.azkar;
-
+                final currentZekr = azkarList[currentIndex];
                 return PageView.builder(
+                  physics: const NeverScrollableScrollPhysics(),
                   controller: pageController,
                   itemCount: azkarList.length,
-                  onPageChanged: (i) => setState(() => currentIndex = i),
+                  onPageChanged: (index) {
+                    currentIndex = index;
+                    setState(() {});
+                  },
                   itemBuilder: (context, index) {
                     final zekr = azkarList[index];
-
                     return Stack(
                       children: [
                         Positioned.fill(
@@ -67,6 +72,7 @@ class _ReadAzkarViewBodyState extends State<ReadAzkarViewBody> {
                               child: Text(
                                 zekr.arabicText,
                                 textDirection: TextDirection.rtl,
+                                style: AppTextStyle.semiBold16,
                               ),
                             ),
                           ),
@@ -76,8 +82,6 @@ class _ReadAzkarViewBodyState extends State<ReadAzkarViewBody> {
                   },
                 );
               }
-
-              // initial state before fetching
               return const SizedBox.shrink();
             },
           ),
@@ -85,12 +89,18 @@ class _ReadAzkarViewBodyState extends State<ReadAzkarViewBody> {
 
         BlocBuilder<AzkarCubit, AzkarState>(
           builder: (context, state) {
-            final total = (state is AzkarLoaded) ? state.data.azkar.length : 0;
+            if (state is! AzkarLoaded) {
+              return const SizedBox.shrink();
+            }
+
+            final azkarList = state.data.azkar;
+            final currentZekr = azkarList[currentIndex];
 
             return AzkarCounterWidget(
               pageController: pageController,
               currentIndex: currentIndex,
-              totalZekr: total,
+              totalZekr: currentZekr.repeat,
+              audioUrl: currentZekr.audio ?? '',
             );
           },
         ),

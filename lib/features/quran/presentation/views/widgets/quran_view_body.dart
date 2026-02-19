@@ -49,7 +49,11 @@ class QuranViewBody extends StatelessWidget {
               );
             }
             if (state is QuranSuccess) {
-              return QuranSurahSliverList(surahs: state.surahs);
+              final cubit = context.read<QuranCubit>();
+              final list = cubit.showFavorites
+                  ? cubit.favoriteSurahs
+                  : state.surahs;
+              return QuranSurahSliverList(surahs: list);
             }
             return SliverToBoxAdapter(
               child: Center(child: Text('Something went wrong'.tr)),

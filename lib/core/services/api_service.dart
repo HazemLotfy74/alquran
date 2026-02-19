@@ -2,6 +2,8 @@ import 'dart:convert';
 import 'dart:developer';
 
 import 'package:alquran/constants/api.dart';
+import 'package:alquran/constants/storage_keys.dart';
+import 'package:alquran/core/services/get_it_service.dart';
 import 'package:get/get.dart';
 import 'package:http/http.dart' as http;
 
@@ -11,8 +13,21 @@ class ApiService {
   // ================== Get Surah ==================
   Future<List<dynamic>> getQuran() async {
     try {
+      final cashedData = await hive.get<dynamic>(
+        StorageKeys.fullQuranBox,
+        StorageKeys.fullQuranKey,
+      );
+      if (cashedData != null) {
+        final data = jsonDecode(cashedData);
+        return data['data']['surahs'];
+      }
       final response = await http.get(Uri.parse(ApiUrl.quranApi));
       if (response.statusCode == 200) {
+        await hive.put<dynamic>(
+          StorageKeys.fullQuranBox,
+          StorageKeys.fullQuranKey,
+          response.body,
+        );
         final data = jsonDecode(response.body);
         return data['data']['surahs'];
       } else {

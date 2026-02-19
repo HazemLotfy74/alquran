@@ -11,6 +11,11 @@ class AudioService {
     player.play();
   }
 
+  Future<void> playLocalAudio(String audioPath) async {
+    await player.setFilePath(audioPath);
+    player.play();
+  }
+
   void pause() => player.pause();
 
   void resume() => player.play();
