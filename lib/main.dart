@@ -1,3 +1,4 @@
+import 'package:alquran/core/cubits/location_cubit/location_cubit.dart';
 import 'package:alquran/core/cubits/quran_cubit/quran_cubit.dart';
 import 'package:alquran/core/functions/on_generate_route.dart';
 import 'package:alquran/core/services/get_it_service.dart';
@@ -10,6 +11,8 @@ import 'package:get/get_navigation/src/root/get_material_app.dart';
 import 'package:media_store_plus/media_store_plus.dart';
 
 import 'core/services/local_storage_service.dart';
+import 'core/services/location_service.dart';
+import 'core/utils/app_bloc_observer.dart';
 import 'localization/app_localization.dart';
 
 void main() async {
@@ -19,6 +22,7 @@ void main() async {
     MediaStore.appFolder = "Quran Downloads";
   }
   await setup();
+  Bloc.observer = AppBlocObserver();
 
   runApp(const MyApp());
 }
@@ -35,6 +39,10 @@ class MyApp extends StatelessWidget {
             quranRepo: getIt.get<QuranRepo>(),
             localStorageService: getIt.get<LocalStorageService>(),
           )..getSurahs(),
+        ),
+        BlocProvider(
+          create: (context) =>
+              LocationCubit(locationService: LocationService())..getLocation(),
         ),
       ],
       child: GetMaterialApp(

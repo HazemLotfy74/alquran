@@ -6,7 +6,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_compass/flutter_compass.dart';
 
-import '../../../../core/services/get_it_service.dart';
 import '../cubit/qibla_cubit.dart';
 import '../cubit/qibla_state.dart';
 import 'widgets/qibla_compass_card.dart';
@@ -17,13 +16,16 @@ class QiblaViewBody extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (_) => QiblaCubit(getIt.get<LocationService>()),
+      create: (_) => QiblaCubit(LocationService())..loadQibla(),
       child: Scaffold(
         body: SizedBox.expand(
           child: Stack(
             children: [
-              Positioned.fill(
-                child: Image.asset(Assets.imagesBackground2, fit: BoxFit.cover),
+              Image.asset(
+                Assets.imagesBackground2,
+                fit: BoxFit.cover,
+                width: double.infinity,
+                height: double.infinity,
               ),
               SafeArea(
                 child: Center(
