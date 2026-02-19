@@ -21,6 +21,7 @@ class HomeViewBody extends StatelessWidget {
             slivers: [
               LocationAndTimeWidget(),
               ContinueReadingWidget(),
+              const SliverPadding(padding: EdgeInsets.symmetric(vertical: 10)),
               HomeViewBodySliverGrid(),
             ],
           ),

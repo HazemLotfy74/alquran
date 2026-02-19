@@ -37,27 +37,34 @@ class Assets {
   static const String imagesSearchZoomIn = 'assets/images/search-zoom-in.svg';
   static const String imagesSearchZoomOut = 'assets/images/search-zoom-out.svg';
   static const String imagesSebah = 'assets/images/sebah.svg';
-
+  static const String imagesSelectedAzkarIcon =
+      'assets/images/selected_azkar_icon.svg';
+  static const String imagesSelectedDuahIcon =
+      'assets/images/selected_duah_icon.svg';
+  static const String imagesSelectedPrayerIcon =
+      'assets/images/selected_prayer_icon.svg';
+  static const String imagesSelectedQuranIcon =
+      'assets/images/selected_quran_icon.svg';
+  static const String imagesSelectedTasbehIcon =
+      'assets/images/selected_tasbeh_icon.svg';
   static const String imagesSetting = 'assets/images/setting.svg';
   static const String imagesSleepAzkar = 'assets/images/sleep_azkar.svg';
-  static const String imagesSurahNumber = 'assets/images/surah_number.svg';
+  static const String imagesSurahNumberGreen =
+      'assets/images/surah_number_green.svg';
+  static const String imagesSurahNumberWhite =
+      'assets/images/surah_number_white.svg';
   static const String imagesUnselectedAzkarIcon =
       'assets/images/unselected_azkar_icon.svg';
   static const String imagesUnselectedDoahIcon =
       'assets/images/unselected_doah_icon.svg';
   static const String imagesUnselectedPrayerIcon =
       'assets/images/unselected_prayer_icon.svg';
+  static const String imagesUnselectedQuranIcon =
+      'assets/images/unselected_quran_icon.svg';
   static const String imagesUnselectedTasbehIcon =
       'assets/images/unselected_tasbeh_icon.svg';
-  static const String imagesSelectedTasbehIcon =
-      'assets/images/selected_tasbeh_icon.svg';
-  static const String imagesSelectedPrayerIcon =
-      'assets/images/selected_prayer_icon.svg';
   static const String imagesVecteezyMuslimManPrayingAfterShalat7885406 =
       'assets/images/vecteezy_muslim-man-praying-after-shalat_7885406.svg';
   static const String imagesWakeAzkar = 'assets/images/wake_azkar.svg';
   static const String imagesWodoqAzkar = 'assets/images/wodoq_azkar.svg';
-  static const String imageSelectedQuran='assets/images/selected_quran_icon.svg';
-  static const String imageUnSelectedQuran='assets/images/selected_quran_icon.svg';
-  static const String imageQiblaIcon='assets/images/qibla.png';
 }

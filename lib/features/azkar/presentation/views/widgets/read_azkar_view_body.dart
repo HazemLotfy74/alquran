@@ -42,7 +42,7 @@ class _ReadAzkarViewBodyState extends State<ReadAzkarViewBody> {
 
               if (state is AzkarLoaded) {
                 final azkarList = state.data.azkar;
-                final currentZekr = azkarList[currentIndex];
+                azkarList[currentIndex];
                 return PageView.builder(
                   physics: const NeverScrollableScrollPhysics(),
                   controller: pageController,

@@ -6,6 +6,8 @@ final class QuranInitial extends QuranState {}
 
 final class QuranLoading extends QuranState {}
 
+final class SaveLastReadSurah extends QuranState {}
+
 final class QuranSuccess extends QuranState {
   final List<SurahEntity> surahs;
   QuranSuccess({required this.surahs});
