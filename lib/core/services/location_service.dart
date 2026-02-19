@@ -7,7 +7,7 @@ import 'package:get/get.dart';
 import 'package:location/location.dart';
 
 class LocationService {
-  Location get location => Location();
+  final Location location = Location();
 
   Future<Either<String, bool>> initializeLocationPermission() async {
     try {
@@ -34,22 +34,21 @@ class LocationService {
 
   Future<LocationEntity> getLocation() async {
     log('STEP 1');
-    LocationData locationData = await location.getLocation();
-    log('STEP 2');
 
-    while (locationData.latitude == null || locationData.longitude == null) {
-      await Future.delayed(const Duration(seconds: 1));
-      locationData = await location.getLocation();
-    }
+    final locationData = await location.getLocation();
+    log('STEP 2');
 
     final placemarks = await geo.placemarkFromCoordinates(
       locationData.latitude!,
       locationData.longitude!,
     );
+
     log('STEP 3');
+
     if (placemarks.isNotEmpty) {
       final p = placemarks.first;
       log('STEP 4');
+
       return LocationEntity(
         latitude: locationData.latitude,
         longitude: locationData.longitude,
