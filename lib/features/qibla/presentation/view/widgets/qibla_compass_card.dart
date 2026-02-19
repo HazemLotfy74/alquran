@@ -1,8 +1,10 @@
 import 'dart:ui';
 
+import 'package:alquran/core/utils/app_colors.dart';
 import 'package:alquran/features/qibla/presentation/view/widgets/qibla_arrow.dart';
 import 'package:alquran/features/qibla/presentation/view/widgets/qibla_compass_ring.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 import '../../../../../core/utils/app_text_style.dart';
 
@@ -26,7 +28,7 @@ class QiblaCompassCard extends StatelessWidget {
           width: 320,
           padding: const EdgeInsets.all(18),
           decoration: BoxDecoration(
-            color: Colors.white.withValues(alpha: 0.18),
+            color: AppColors.lightGreenColor,
             borderRadius: BorderRadius.circular(28),
             border: Border.all(color: Colors.white.withValues(alpha: 0.25)),
           ),
@@ -34,7 +36,7 @@ class QiblaCompassCard extends StatelessWidget {
             mainAxisSize: MainAxisSize.min,
             children: [
               Text(
-                "Qibla Direction",
+                "Qibla Direction".tr,
                 style: AppTextStyle.bold18.copyWith(color: Colors.white),
               ),
               const SizedBox(height: 6),
@@ -45,7 +47,6 @@ class QiblaCompassCard extends StatelessWidget {
                 ),
               ),
               const SizedBox(height: 16),
-
               SizedBox(
                 width: 260,
                 height: 260,
@@ -64,7 +65,7 @@ class QiblaCompassCard extends StatelessWidget {
                           BoxShadow(
                             blurRadius: 12,
                             spreadRadius: 1,
-                            color: Colors.black.withValues(alpha:0.15),
+                            color: Colors.black.withValues(alpha: 0.15),
                           ),
                         ],
                       ),

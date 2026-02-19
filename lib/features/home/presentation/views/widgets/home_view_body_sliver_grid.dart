@@ -15,7 +15,10 @@ class HomeViewBodySliverGrid extends StatelessWidget {
       image: Assets.imagesHeadphoneSvgrepo,
       title: 'الاستماع',
     ),
-    HomeGridItemsEntity(image: Assets.imageQiblaIcon, title: 'قبلة الصلاة'),
+    HomeGridItemsEntity(
+      image: Assets.assetsImagesQiblaCompassSvgrepoCom,
+      title: 'قبلة الصلاة',
+    ),
     HomeGridItemsEntity(image: Assets.imagesPrayDaySvgrepo, title: 'الاذكار'),
   ];
   @override

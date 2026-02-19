@@ -2,6 +2,8 @@
 class Assets {
   Assets._();
 
+  static const String assetsImagesQiblaCompassSvgrepoCom =
+      'assets/images/qibla-compass-svgrepo-com.svg';
   static const String fontsAmiriBold = 'assets/fonts/Amiri-Bold.ttf';
   static const String fontsAmiriRegular = 'assets/fonts/Amiri-Regular.ttf';
   static const String fontsPoppinsBold = 'assets/fonts/Poppins-Bold.ttf';
@@ -29,6 +31,9 @@ class Assets {
   static const String imagesPrayDaySvgrepo =
       'assets/images/pray-day-svgrepo.svg';
   static const String imagesPrevious = 'assets/images/Previous.svg';
+  static const String imagesQibla = 'assets/images/qibla.png';
+  static const String imagesQiblaCompassSvgrepoCom =
+      'assets/images/qibla-compass-svgrepo-com.svg';
   static const String imagesQuranBookSvg = 'assets/images/quran-bookSvg.svg';
   static const String imagesQuranSplash = 'assets/images/quranSplash.png';
   static const String imagesQuranSplash2 = 'assets/images/quranSplash2.png';
