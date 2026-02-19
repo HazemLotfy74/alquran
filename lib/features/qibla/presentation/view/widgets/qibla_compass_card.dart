@@ -4,9 +4,11 @@ import 'package:alquran/core/utils/app_colors.dart';
 import 'package:alquran/features/qibla/presentation/view/widgets/qibla_arrow.dart';
 import 'package:alquran/features/qibla/presentation/view/widgets/qibla_compass_ring.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 
 import '../../../../../core/utils/app_text_style.dart';
+import '../../../../../generated/assets.dart';
 
 class QiblaCompassCard extends StatelessWidget {
   final double angleRadians;
@@ -54,6 +56,14 @@ class QiblaCompassCard extends StatelessWidget {
                   alignment: Alignment.center,
                   children: [
                     const QiblaCompassRing(),
+                    Positioned(
+                      top: 12,
+                      child: SvgPicture.asset(
+                        Assets.imageKaaba,
+                        width: 30,
+                        height: 30,
+                      ),
+                    ),
                     QiblaArrow(angleRadians: angleRadians),
                     Container(
                       width: 12,
