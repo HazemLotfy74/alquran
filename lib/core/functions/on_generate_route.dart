@@ -15,6 +15,7 @@ import '../../features/azkar/domain/repositories/azkar_repository_impl.dart';
 import '../../features/azkar/domain/usecases/get_azkar_by_category_usecase.dart';
 import '../../features/azkar/presentation/cubit/azkar_cubit.dart';
 import '../../features/misbaha/presentation/misbaha_view.dart';
+import '../../features/qibla/presentation/view/qibla_view.dart';
 import '../../features/splash/presentation/views/splash_view.dart';
 import '../entities/surah_entity.dart';
 
@@ -29,6 +30,7 @@ class AppRouter {
   static const String readAzkar = '/readAzkar';
   static const String prayer = '/prayer';
   static const String misbaha = '/misbaha';
+  static const String qibla = '/qibla';
 
   // ================= Route Generator =================
 
@@ -71,6 +73,8 @@ class AppRouter {
         return MaterialPageRoute(builder: (_) => const TimePrayerView());
       case misbaha:
         return MaterialPageRoute(builder: (_) => const MisbahaView());
+       case qibla:
+        return MaterialPageRoute(builder: (_) => const QiblaView());
       default:
         return MaterialPageRoute(builder: (_) => HomeView());
     }
