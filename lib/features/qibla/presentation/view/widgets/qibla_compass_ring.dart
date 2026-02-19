@@ -43,20 +43,6 @@ class _CompassRingPainter extends CustomPainter {
       tickPaint.strokeWidth = isMajor ? 2.6 : 1.6;
       canvas.drawLine(p1, p2, tickPaint);
     }
-
-    final tp = TextPainter(
-      text: const TextSpan(
-        text: 'N',
-        style: TextStyle(
-          color: Colors.white,
-          fontWeight: FontWeight.w800,
-          fontSize: 16,
-        ),
-      ),
-      textDirection: TextDirection.ltr,
-    )..layout();
-
-    tp.paint(canvas, Offset(center.dx - tp.width / 2, 10));
   }
 
   @override
