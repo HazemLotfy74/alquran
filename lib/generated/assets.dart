@@ -72,4 +72,5 @@ class Assets {
       'assets/images/vecteezy_muslim-man-praying-after-shalat_7885406.svg';
   static const String imagesWakeAzkar = 'assets/images/wake_azkar.svg';
   static const String imagesWodoqAzkar = 'assets/images/wodoq_azkar.svg';
+  static const String imageKaaba='assets/images/kaaba-svgrepo-com.svg';
 }
