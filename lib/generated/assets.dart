@@ -57,4 +57,5 @@ class Assets {
   static const String imagesWodoqAzkar = 'assets/images/wodoq_azkar.svg';
   static const String imageSelectedQuran='assets/images/selected_quran_icon.svg';
   static const String imageUnSelectedQuran='assets/images/selected_quran_icon.svg';
+  static const String imageQiblaIcon='assets/images/qibla.png';
 }

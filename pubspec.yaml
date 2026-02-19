@@ -51,6 +51,7 @@ dependencies:
   bloc_provider: ^1.0.0
   flutter_bloc: ^9.1.1
   adhan: ^2.0.0+1
+  flutter_compass: ^0.8.1
 
 dev_dependencies:
   flutter_test:

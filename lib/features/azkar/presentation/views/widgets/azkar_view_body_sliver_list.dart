@@ -47,7 +47,7 @@ class AzkarCategoriesViewBody extends StatelessWidget {
                       final item = categories[index];
 
                       return ListTile(
-                        tileColor: Colors.white.withOpacity(0.8), // optional
+                        tileColor: Colors.white.withValues(alpha: 0.8), // optional
                         title: Text(
                           item.title,
                           textDirection: TextDirection.rtl,

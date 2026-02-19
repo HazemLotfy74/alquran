@@ -15,7 +15,7 @@ class HomeViewBodySliverGrid extends StatelessWidget {
       image: Assets.imagesHeadphoneSvgrepo,
       title: 'الاستماع',
     ),
-    HomeGridItemsEntity(image: Assets.imagesDohaa, title: 'ادعية'),
+    HomeGridItemsEntity(image: Assets.imageQiblaIcon, title: 'قبلة الصلاة'),
     HomeGridItemsEntity(image: Assets.imagesPrayDaySvgrepo, title: 'الاذكار'),
   ];
   @override
@@ -36,6 +36,9 @@ class HomeViewBodySliverGrid extends StatelessWidget {
             }
             if (index == 1) {
               Navigator.pushNamed(context, AppRouter.listenToQuran);
+            }
+            if (index == 2) {
+              Navigator.pushNamed(context, AppRouter.qibla);
             }
             if (index == 3) {
               Navigator.pushNamed(context, AppRouter.azkar);
