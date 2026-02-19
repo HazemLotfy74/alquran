@@ -3,6 +3,7 @@ import 'package:alquran/core/functions/on_generate_route.dart';
 import 'package:alquran/core/services/get_it_service.dart';
 import 'package:alquran/core/utils/app_theme.dart';
 import 'package:alquran/features/quran/domain/repo/quran_repo.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get/get_navigation/src/root/get_material_app.dart';
@@ -13,9 +14,11 @@ import 'localization/app_localization.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  if (!kIsWeb) {
+    await MediaStore.ensureInitialized();
+    MediaStore.appFolder = "Quran Downloads";
+  }
   await setup();
-  await MediaStore.ensureInitialized();
-  MediaStore.appFolder = "Quran Downloads";
 
   runApp(const MyApp());
 }

@@ -21,17 +21,18 @@ class BottomNavBar extends StatelessWidget {
       items: [
         BottomNavigationBarItem(
           icon: SvgPicture.asset(
-            Assets.imageUnSelectedQuran,
+            Assets.imagesUnselectedQuranIcon,
             width: 24,
             height: 24,
           ),
           activeIcon: SvgPicture.asset(
-            Assets.imageSelectedQuran,
+            Assets.imagesSelectedQuranIcon,
             width: 24,
             height: 24,
           ),
           label: "الرئيسية",
-        ),        BottomNavigationBarItem(
+        ),
+        BottomNavigationBarItem(
           icon: SvgPicture.asset(
             Assets.imagesUnselectedPrayerIcon,
             width: 24,
