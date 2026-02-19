@@ -1,4 +1,3 @@
-import 'package:alquran/core/services/get_it_service.dart';
 import 'package:alquran/features/time_prayer/presentation/views/time_prayer_body.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -12,8 +11,7 @@ class TimePrayerView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (_) =>
-          PrayerTimesCubit(getIt.get<LocationService>())..loadPrayerTimes(),
+      create: (_) => PrayerTimesCubit(LocationService())..loadPrayerTimes(),
       child: Scaffold(body: TimePrayerBody()),
     );
   }

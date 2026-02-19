@@ -1,6 +1,6 @@
 import 'dart:developer';
 
-import 'package:alquran/features/home/presentation/manager/location_cubit.dart';
+import 'package:alquran/core/cubits/location_cubit/location_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:skeletonizer/skeletonizer.dart';
@@ -61,7 +61,7 @@ class LocationWidget extends StatelessWidget {
             ],
           );
         }
-        return const SizedBox();
+        return Text('error');
       },
     );
   }
