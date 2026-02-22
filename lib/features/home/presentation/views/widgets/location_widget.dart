@@ -39,26 +39,31 @@ class LocationWidget extends StatelessWidget {
         }
         if (state is LocationSuccess) {
           log(state.locationEntity.city ?? 'no city');
-          return Row(
-            mainAxisAlignment: MainAxisAlignment.start,
-            children: [
-              Icon(Icons.location_on_sharp, color: AppColors.primaryColor),
-              Text.rich(
-                TextSpan(
-                  children: [
+          return SizedBox(
+            width: double.infinity,
+            child: Row(
+              children: [
+                Icon(Icons.location_on_sharp, color: AppColors.primaryColor),
+                const SizedBox(width: 6),
+                Expanded(
+                  child: Text.rich(
                     TextSpan(
-                      text: state.locationEntity.address ?? '',
-                      style: AppTextStyle.bold15,
+                      children: [
+                        TextSpan(
+                          text: state.locationEntity.address ?? '',
+                          style: AppTextStyle.bold15,
+                        ),
+                        const TextSpan(text: ' , '),
+                        TextSpan(
+                          text: state.locationEntity.city ?? '',
+                          style: AppTextStyle.bold15,
+                        ),
+                      ],
                     ),
-                    TextSpan(text: ' , ', style: AppTextStyle.bold15),
-                    TextSpan(
-                      text: state.locationEntity.city ?? '',
-                      style: AppTextStyle.bold15,
-                    ),
-                  ],
+                  ),
                 ),
-              ),
-            ],
+              ],
+            ),
           );
         }
         return Text('error');

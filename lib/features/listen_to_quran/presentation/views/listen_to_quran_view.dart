@@ -43,7 +43,7 @@ class ListenToQuranView extends StatelessWidget {
             BlocListener<AudioCubit, AudioState>(
               listener: (context, state) {
                 if (state is AudioFailed) {
-                  customSnackBar(context, message: 'Audio failed');
+                  customSnackBar(context, message: 'Audio failed'.tr);
                 }
               },
             ),
