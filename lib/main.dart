@@ -23,7 +23,6 @@ void main() async {
   }
   await setup();
   Bloc.observer = AppBlocObserver();
-
   runApp(const MyApp());
 }
 

@@ -58,7 +58,6 @@ class _AzkarCounterWidgetState extends State<AzkarCounterWidget> {
                   setState(() {});
                 }
                 if (counter == widget.totalZekr) {
-                  counter = 0;
                   if (widget.audioUrl.isEmpty) return;
                   context.read<AzkarAudioCubit>().stopAudio();
                   widget.pageController.nextPage(
@@ -107,10 +106,10 @@ class _AzkarCounterWidgetState extends State<AzkarCounterWidget> {
                           setState(() {});
                         }
                         if (widget.audioUrl.isEmpty) return;
-                        context.read<AzkarAudioCubit>().pauseAudio();
-                        widget.pageController.nextPage(
-                          duration: Duration(milliseconds: 300),
-                          curve: Curves.easeIn,
+                        context.read<AzkarAudioCubit>().stopAudio();
+                        widget.pageController.previousPage(
+                          duration: const Duration(milliseconds: 300),
+                          curve: Curves.easeInOut,
                         );
                       },
                       icon: Icon(Icons.skip_next_outlined),
@@ -135,10 +134,10 @@ class _AzkarCounterWidgetState extends State<AzkarCounterWidget> {
                           setState(() {});
                         }
                         if (widget.audioUrl.isEmpty) return;
-                        context.read<AzkarAudioCubit>().stopAudio();
-                        widget.pageController.previousPage(
-                          duration: const Duration(milliseconds: 300),
-                          curve: Curves.easeInOut,
+                        context.read<AzkarAudioCubit>().pauseAudio();
+                        widget.pageController.nextPage(
+                          duration: Duration(milliseconds: 300),
+                          curve: Curves.easeIn,
                         );
                       },
                       icon: Icon(Icons.skip_previous_outlined),

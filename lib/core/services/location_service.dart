@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:alquran/core/entities/location_entity.dart';
 import 'package:dartz/dartz.dart';
 import 'package:geocoding/geocoding.dart' as geo;
@@ -33,21 +31,15 @@ class LocationService {
   }
 
   Future<LocationEntity> getLocation() async {
-    log('STEP 1');
-
     final locationData = await location.getLocation();
-    log('STEP 2');
 
     final placemarks = await geo.placemarkFromCoordinates(
       locationData.latitude!,
       locationData.longitude!,
     );
 
-    log('STEP 3');
-
     if (placemarks.isNotEmpty) {
       final p = placemarks.first;
-      log('STEP 4');
 
       return LocationEntity(
         latitude: locationData.latitude,

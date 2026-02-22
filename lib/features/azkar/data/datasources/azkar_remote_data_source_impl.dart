@@ -1,6 +1,9 @@
 import 'dart:convert';
+
 import 'package:alquran/constants/api.dart';
+import 'package:alquran/core/errors/exception.dart';
 import 'package:alquran/features/azkar/data/datasources/azkar_remote_data_source.dart';
+import 'package:get/get.dart';
 import 'package:http/http.dart' as http;
 
 import '../model/azkar_category_model.dart';
@@ -18,18 +21,18 @@ class AzkarRemoteDataSourceImpl implements AzkarRemoteDataSource {
       );
 
       if (response.statusCode != 200) {
-        throw Exception('Failed to load azkar');
+        throw CustomException(message: 'Failed to load azkar'.tr);
       }
 
       final body = response.body.trim().replaceAll('\uFEFF', '');
       final decoded = jsonDecode(body);
 
       if (decoded is! Map<String, dynamic>) {
-        throw Exception('Unexpected JSON format');
+        throw CustomException(message: 'Failed to load azkar'.tr);
       }
       return decoded;
     } catch (e) {
-      throw Exception('AzkarRemoteDataSource error: $e');
+      throw CustomException(message: 'Failed to load azkar');
     }
   }
 
