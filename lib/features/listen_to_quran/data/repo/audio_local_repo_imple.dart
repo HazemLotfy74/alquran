@@ -14,13 +14,14 @@ class AudioLocalRepoImpl implements AudioLocalRepo {
     Function(int, int)? onProgress,
   }) async {
     try {
-      final path = await audioDownloadService.downloadAudio(
+      await audioDownloadService.downloadAudio(
         url: url,
         fileName: fileName,
         onProgress: onProgress,
         reciterName: reciterName,
       );
-      return Right(path!);
+
+      return Right('Audio downloaded successfully');
     } catch (e) {
       return Left(DownloadFailure(e.toString()));
     }

@@ -24,7 +24,7 @@ class _LocationAndTimeWidgetState extends State<LocationAndTimeWidget> {
   Widget build(BuildContext context) {
     return SliverToBoxAdapter(
       child: Column(
-        crossAxisAlignment: CrossAxisAlignment.end,
+        crossAxisAlignment: CrossAxisAlignment.start,
         spacing: 15,
         children: [
           Center(
@@ -37,7 +37,7 @@ class _LocationAndTimeWidgetState extends State<LocationAndTimeWidget> {
           ),
           LocationWidget(),
           DateAndLiveTimeWidget(),
-          SizedBox(height: 25),
+          const SizedBox(height: 10),
         ],
       ),
     );
