@@ -41,10 +41,10 @@ class DownloadCubit extends Cubit<DownloadState> {
       (fail) {
         emit(DownloadFailed(errMsg: fail.message));
       },
-      (url) {
+      (success) {
         Get.showSnackbar(
           GetSnackBar(
-            message: 'Audio downloaded successfully'.tr,
+            message: success.tr,
             duration: const Duration(seconds: 2),
             snackPosition: SnackPosition.BOTTOM,
             backgroundColor: AppColors.primaryColor,

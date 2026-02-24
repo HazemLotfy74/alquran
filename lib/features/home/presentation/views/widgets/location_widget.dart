@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:alquran/core/cubits/location_cubit/location_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -33,33 +31,48 @@ class LocationWidget extends StatelessWidget {
               children: [
                 Icon(Icons.warning_amber, color: Colors.red),
                 Text(state.message),
+                const Spacer(),
+                TextButton(
+                  onPressed: () {
+                    context.read<LocationCubit>().getLocation();
+                  },
+                  child: Text(
+                    'تشغيل خدمات الموقع',
+                    style: AppTextStyle.medium14.copyWith(
+                      color: Colors.blue,
+                      decoration: TextDecoration.underline,
+                    ),
+                  ),
+                ),
               ],
             ),
           );
         }
         if (state is LocationSuccess) {
-          log(state.locationEntity.city ?? 'no city');
-          return SizedBox(
-            width: double.infinity,
+          return Container(
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(15),
+              border: Border.all(color: AppColors.primaryColor, width: 1),
+            ),
+            padding: EdgeInsets.symmetric(horizontal: 5, vertical: 5),
             child: Row(
+              mainAxisSize: MainAxisSize.min,
+              mainAxisAlignment: MainAxisAlignment.end,
               children: [
                 Icon(Icons.location_on_sharp, color: AppColors.primaryColor),
-                const SizedBox(width: 6),
-                Expanded(
-                  child: Text.rich(
-                    TextSpan(
-                      children: [
-                        TextSpan(
-                          text: state.locationEntity.address ?? '',
-                          style: AppTextStyle.bold15,
-                        ),
-                        const TextSpan(text: ' , '),
-                        TextSpan(
-                          text: state.locationEntity.city ?? '',
-                          style: AppTextStyle.bold15,
-                        ),
-                      ],
-                    ),
+                Text.rich(
+                  TextSpan(
+                    children: [
+                      TextSpan(
+                        text: state.locationEntity.address ?? '',
+                        style: AppTextStyle.bold15,
+                      ),
+                      const TextSpan(text: ' , '),
+                      TextSpan(
+                        text: state.locationEntity.city ?? '',
+                        style: AppTextStyle.bold15,
+                      ),
+                    ],
                   ),
                 ),
               ],
