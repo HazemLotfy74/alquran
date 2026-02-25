@@ -59,7 +59,7 @@ class QiblaCompassCard extends StatelessWidget {
                     Positioned(
                       top: 12,
                       child: SvgPicture.asset(
-                        Assets.imageKaaba,
+                        Assets.imagesKaabaSvgrepoCom,
                         width: 30,
                         height: 30,
                       ),

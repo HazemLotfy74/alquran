@@ -28,8 +28,6 @@ class AzkarViewBody extends StatelessWidget {
                     AzkarCategoryModel(id: 0, title: '', textUrl: ''),
                     AzkarCategoryModel(id: 0, title: '', textUrl: ''),
                     AzkarCategoryModel(id: 0, title: '', textUrl: ''),
-                    AzkarCategoryModel(id: 0, title: '', textUrl: ''),
-                    AzkarCategoryModel(id: 0, title: '', textUrl: ''),
                   ],
                 ),
               );

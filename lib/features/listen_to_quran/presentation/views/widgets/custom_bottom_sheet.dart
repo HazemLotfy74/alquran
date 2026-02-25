@@ -19,7 +19,7 @@ class CustomBottomSheet extends StatelessWidget {
     return GestureDetector(
       onTap: () => bottomSheet(context, surah: surah),
       child: Container(
-        padding: EdgeInsets.all(16),
+        padding: const EdgeInsets.all(16),
         decoration: BoxDecoration(
           color: AppColors.primaryColor,
           borderRadius: BorderRadiusGeometry.circular(10),

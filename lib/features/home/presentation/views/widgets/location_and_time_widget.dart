@@ -27,6 +27,7 @@ class _LocationAndTimeWidgetState extends State<LocationAndTimeWidget> {
         crossAxisAlignment: CrossAxisAlignment.start,
         spacing: 15,
         children: [
+          const SizedBox(height: 10),
           Center(
             child: Text(
               'اقرأ',
@@ -35,8 +36,8 @@ class _LocationAndTimeWidgetState extends State<LocationAndTimeWidget> {
               ),
             ),
           ),
-          LocationWidget(),
-          DateAndLiveTimeWidget(),
+          const LocationWidget(),
+          const DateAndLiveTimeWidget(),
           const SizedBox(height: 10),
         ],
       ),

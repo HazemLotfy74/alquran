@@ -65,7 +65,7 @@ class _AudioControlsState extends State<AudioControls> {
                     quranCubit.selectSurah(next);
                     await cubit.getAudio(surahNumber: next.number);
                   },
-                  icon: Icon(
+                  icon: const Icon(
                     Icons.skip_next_rounded,
                     color: AppColors.arrowColor,
                     size: 35,
@@ -85,8 +85,8 @@ class _AudioControlsState extends State<AudioControls> {
                   ),
                   style: IconButton.styleFrom(
                     backgroundColor: AppColors.primaryColor,
-                    shape: CircleBorder(),
-                    padding: EdgeInsets.all(15),
+                    shape: const CircleBorder(),
+                    padding: const EdgeInsets.all(15),
                   ),
                 ),
                 IconButton(
@@ -96,7 +96,7 @@ class _AudioControlsState extends State<AudioControls> {
                     quranCubit.selectSurah(next);
                     await cubit.getAudio(surahNumber: next.number);
                   },
-                  icon: Icon(
+                  icon: const Icon(
                     Icons.skip_previous_rounded,
                     color: AppColors.arrowColor,
                     size: 35,
@@ -107,7 +107,7 @@ class _AudioControlsState extends State<AudioControls> {
             BlocBuilder<DownloadCubit, DownloadState>(
               builder: (context, state) {
                 if (state is DownloadSuccess) {
-                  return Icon(
+                  return const Icon(
                     Icons.download_done,
                     color: AppColors.primaryColor,
                   );
@@ -125,7 +125,7 @@ class _AudioControlsState extends State<AudioControls> {
                     }
                     null;
                   },
-                  icon: Icon(Icons.download, color: AppColors.arrowColor),
+                  icon: const Icon(Icons.download, color: AppColors.arrowColor),
                 );
               },
             ),

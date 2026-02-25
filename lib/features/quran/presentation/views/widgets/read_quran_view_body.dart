@@ -26,13 +26,13 @@ class _ReadQuranViewBodyState extends State<ReadQuranViewBody> {
         SingleChildScrollView(
           child: Column(
             children: [
-              SizedBox(height: 50),
+              const SizedBox(height: 50),
               QuranTextWidget(
                 fontSizeChanged: fontSize,
                 ayah: widget.surahEntity.ayahs,
                 surahEntity: widget.surahEntity,
               ),
-              SizedBox(height: 20),
+              const SizedBox(height: 20),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 spacing: 20,

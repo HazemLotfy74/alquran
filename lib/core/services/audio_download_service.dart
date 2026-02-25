@@ -23,18 +23,38 @@ class AudioDownloadService {
 
       await dio.download(url, tempPath, onReceiveProgress: onProgress);
 
-      final result = await mediaStore.saveFile(
+      await mediaStore.saveFile(
         dirType: DirType.download,
         dirName: DirName.download,
         relativePath: reciterName,
         tempFilePath: tempPath,
       );
-      if (result == null) {
-        throw Exception("Failed to save in Downloads");
+
+      // ✅ لو رجع null نتحقق هل الملف موجود
+      final exists = await isExist(
+        fileName: fileName,
+        reciterName: reciterName,
+      );
+
+      if (!exists) {
+        throw Exception("File not found after save");
       }
-      return result.name;
-    } catch (e) {
-      log(e.toString());
+
+      return fileName;
+    } catch (e, stackTrace) {
+      log("DOWNLOAD ERROR: $e");
+      log("STACK: $stackTrace");
+
+      // 🔥 أهم نقطة: نتحقق لو الملف موجود فعلاً
+      final exists = await isExist(
+        fileName: fileName,
+        reciterName: reciterName,
+      );
+
+      if (exists) {
+        return fileName; // نعتبره نجاح
+      }
+
       throw CustomException(message: 'Download failed'.tr);
     }
   }

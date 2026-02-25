@@ -60,10 +60,8 @@ class MyApp extends StatelessWidget {
         theme: AppTheme.lightTheme,
         initialRoute: AppRouter.splash,
         // offline banner
-        builder: (context,child){
-          return OfflineBanner(
-            child:child?? const SizedBox.shrink(),
-          );
+        builder: (context, child) {
+          return OfflineBanner(child: child ?? const SizedBox.shrink());
         },
       ),
     );

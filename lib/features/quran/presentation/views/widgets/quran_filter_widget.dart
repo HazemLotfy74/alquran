@@ -18,7 +18,7 @@ class _QuranFilterWidgetState extends State<QuranFilterWidget> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsetsGeometry.symmetric(horizontal: 2, vertical: 2),
+      padding: const EdgeInsetsGeometry.symmetric(horizontal: 2, vertical: 2),
       decoration: BoxDecoration(
         color: Colors.grey.shade100,
         borderRadius: BorderRadius.circular(10),

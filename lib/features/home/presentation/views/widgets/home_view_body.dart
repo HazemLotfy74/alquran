@@ -19,8 +19,8 @@ class HomeViewBody extends StatelessWidget {
           padding: const EdgeInsets.symmetric(horizontal: 13, vertical: 25),
           child: CustomScrollView(
             slivers: [
-              LocationAndTimeWidget(),
-              ContinueReadingWidget(),
+              const LocationAndTimeWidget(),
+              const ContinueReadingWidget(),
               const SliverPadding(padding: EdgeInsets.symmetric(vertical: 10)),
               HomeViewBodySliverGrid(),
             ],

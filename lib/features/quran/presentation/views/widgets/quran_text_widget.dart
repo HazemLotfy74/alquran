@@ -106,7 +106,10 @@ class _QuranTextWidgetState extends State<QuranTextWidget> {
           child: Container(
             width: MediaQuery.sizeOf(context).width,
             height: MediaQuery.sizeOf(context).height * 0.6,
-            padding: EdgeInsetsGeometry.symmetric(horizontal: 10, vertical: 12),
+            padding: const EdgeInsetsGeometry.symmetric(
+              horizontal: 10,
+              vertical: 12,
+            ),
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(10),
               color: Colors.white,

@@ -1,6 +1,6 @@
 import 'package:alquran/features/home/domain/entities/home_grid_items_entity.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
+import 'package:flutter_svg/svg.dart';
 
 import '../../../../../core/utils/app_colors.dart';
 import '../../../../../core/utils/app_text_style.dart';
@@ -32,10 +32,13 @@ class HomeViewGridItems extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.center,
               spacing: 10,
               children: [
-                SvgPicture.asset(
-                  item.image,
-                  height: constraints.maxHeight * 0.3,
+                RepaintBoundary(
+                  child: SvgPicture.asset(
+                    item.image,
+                    height: constraints.maxHeight * 0.3,
+                  ),
                 ),
+
                 Text(
                   item.title,
                   style: AppTextStyle.bold20.copyWith(

@@ -1,6 +1,6 @@
 import 'package:alquran/generated/assets.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:hijri/hijri_calendar.dart';
 
 import '../../../../../core/utils/app_colors.dart';
@@ -13,8 +13,7 @@ class DateAndLiveTimeWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsetsGeometry.symmetric(horizontal: 25, vertical: 25),
-      width: double.infinity,
+      padding: const EdgeInsetsGeometry.symmetric(horizontal: 5, vertical: 5),
       decoration: BoxDecoration(
         shape: BoxShape.rectangle,
         borderRadius: BorderRadius.circular(15),
@@ -36,13 +35,15 @@ class DateAndLiveTimeWidget extends StatelessWidget {
                 HijriCalendar.now().toFormat("dd MMMM yyyy هـ"),
                 style: AppTextStyle.semiBold16.copyWith(color: Colors.white),
               ),
-              LiveTimeWidget(),
+              const LiveTimeWidget(),
             ],
           ),
-          SvgPicture.asset(
-            Assets.imagesVecteezyMuslimManPrayingAfterShalat7885406,
-            width: 150,
-            height: 150,
+          RepaintBoundary(
+            child: SvgPicture.asset(
+              Assets.imagesVecteezyMuslimManPrayingAfterShalat7885406,
+              width: 120,
+              height: 120,
+            ),
           ),
         ],
       ),

@@ -16,7 +16,7 @@ class HomeViewBodySliverGrid extends StatelessWidget {
       title: 'الاستماع',
     ),
     HomeGridItemsEntity(
-      image: Assets.assetsImagesQiblaCompassSvgrepoCom,
+      image: Assets.imagesQiblaCompassSvgrepoCom,
       title: 'قبلة الصلاة',
     ),
     HomeGridItemsEntity(
@@ -31,7 +31,7 @@ class HomeViewBodySliverGrid extends StatelessWidget {
         crossAxisCount: 2,
         crossAxisSpacing: 15,
         mainAxisSpacing: 15,
-        childAspectRatio: 1.3,
+        childAspectRatio: 1.4,
       ),
       itemCount: items.length,
       itemBuilder: (context, index) {

@@ -30,8 +30,9 @@ class _ListenToQuranViewBodyState extends State<ListenToQuranViewBody> {
               valueListenable: reciterID,
               builder: (context, value, child) {
                 return Column(
+                  spacing: 20,
                   children: [
-                    SizedBox(height: 20),
+                    const SizedBox(height: 20),
                     CustomDropDownMenuButton(
                       reciterId: (value) {
                         reciterID.value = value;
@@ -40,7 +41,6 @@ class _ListenToQuranViewBodyState extends State<ListenToQuranViewBody> {
                         reciterName.value = value;
                       },
                     ),
-                    SizedBox(height: 20),
                     ClipRRect(
                       borderRadius: BorderRadius.circular(16),
                       child: Image.asset(
@@ -50,8 +50,8 @@ class _ListenToQuranViewBodyState extends State<ListenToQuranViewBody> {
                         fit: BoxFit.cover,
                       ),
                     ),
-                    CustomSliderWidget(),
-                    SizedBox(height: 10),
+                    const CustomSliderWidget(),
+                    const SizedBox(height: 10),
                     BlocBuilder<QuranCubit, QuranState>(
                       builder: (context, state) {
                         final surah = context.watch<QuranCubit>().selectedSurah;
@@ -63,15 +63,14 @@ class _ListenToQuranViewBodyState extends State<ListenToQuranViewBody> {
                         );
                       },
                     ),
-                    Spacer(),
-                    SizedBox(height: 20),
+                    const Spacer(),
                     BlocBuilder<QuranCubit, QuranState>(
                       builder: (context, state) {
                         final surah = context.read<QuranCubit>().surahs;
                         return CustomBottomSheet(surah: surah);
                       },
                     ),
-                    SizedBox(height: 20),
+                    const SizedBox(height: 20),
                   ],
                 );
               },
