@@ -33,3 +33,13 @@ A modern Islamic mobile application built with **Flutter** that provides Quran r
 ## 🏗️ Architecture
 
 The app follows **Clean Architecture** principles:
+lib/
+│
+├── core/
+├── features/
+│ ├── quran/
+│ ├── azkar/
+│ ├── time_prayer/
+│ ├── qibla/
+│ └── misbaha/
+└── shared/
