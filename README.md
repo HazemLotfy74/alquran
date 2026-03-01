@@ -12,15 +12,7 @@ A modern Islamic mobile application built with **Flutter** that provides Quran r
 ✅ Qibla direction compass  
 ✅ Clean & modern UI  
 ✅ Offline-friendly design  
-✅ Arabic language support  
-
----
-
-## 📱 Screenshots
-
-| Home | Azkar | Prayer Times | Qibla |
-|------|------|-------------|-------|
-| *(add screenshot)* | *(add screenshot)* | *(add screenshot)* | *(add screenshot)* |
+✅ Arabic language support 
 
 ---
 
