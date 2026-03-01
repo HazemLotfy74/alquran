@@ -12,7 +12,7 @@ class ScreenHeader extends StatelessWidget {
           onPressed: () {
             Navigator.pop(context);
           },
-          icon: Icon(Icons.arrow_back_ios_new_outlined),
+          icon: const Icon(Icons.arrow_back_ios_new_outlined),
         ),
         Text('القرأن الكريم', style: AppTextStyle.bold20),
       ],

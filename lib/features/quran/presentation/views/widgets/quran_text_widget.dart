@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:alquran/core/entities/ayah_entity.dart';
 import 'package:alquran/core/entities/surah_entity.dart';
 import 'package:alquran/features/quran/presentation/views/widgets/ayah_text_widget.dart';
@@ -28,6 +30,7 @@ class _QuranTextWidgetState extends State<QuranTextWidget> {
   double lastOffset = 0;
   late QuranCubit cubit;
   late List<GlobalKey> ayahKeys;
+  Timer? _debounce;
 
   @override
   void initState() {
@@ -40,6 +43,15 @@ class _QuranTextWidgetState extends State<QuranTextWidget> {
     scrollController.addListener(() {
       lastOffset = scrollController.offset;
       getAyahScrollOffset();
+      _debounce?.cancel();
+      _debounce = Timer(Duration(seconds: 2), () {
+        cubit.saveLastRead(
+          ayahNumber: currentAyah,
+          scrollOffset: lastOffset,
+          fontSize: widget.fontSizeChanged.value,
+          surahEntity: widget.surahEntity,
+        );
+      });
     });
 
     final lastRead = cubit.lastReadModel;
@@ -70,48 +82,57 @@ class _QuranTextWidgetState extends State<QuranTextWidget> {
 
   @override
   void dispose() {
-    cubit.saveLastRead(
-      ayahNumber: currentAyah,
-      scrollOffset: lastOffset,
-      fontSize: widget.fontSizeChanged.value,
-      surahEntity: widget.surahEntity,
-    );
-
+    _debounce?.cancel();
     scrollController.dispose();
     super.dispose();
   }
 
   @override
   Widget build(BuildContext context) {
-    return Center(
-      child: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 27),
-        child: Container(
-          width: MediaQuery.sizeOf(context).width,
-          height: MediaQuery.sizeOf(context).height * 0.6,
-          padding: EdgeInsetsGeometry.symmetric(horizontal: 10, vertical: 12),
-          decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(10),
-            color: Colors.white,
-            boxShadow: [
-              BoxShadow(
-                color: Colors.grey.shade200,
-                spreadRadius: 5,
-                blurRadius: 7,
+    return PopScope(
+      onPopInvokedWithResult: (didPop, result) {
+        if (didPop) {
+          cubit.saveLastRead(
+            ayahNumber: currentAyah,
+            scrollOffset: lastOffset,
+            fontSize: widget.fontSizeChanged.value,
+            surahEntity: widget.surahEntity,
+          );
+        }
+      },
+      child: Center(
+        child: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 27),
+          child: Container(
+            width: MediaQuery.sizeOf(context).width,
+            height: MediaQuery.sizeOf(context).height * 0.6,
+            padding: const EdgeInsetsGeometry.symmetric(
+              horizontal: 10,
+              vertical: 12,
+            ),
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(10),
+              color: Colors.white,
+              boxShadow: [
+                BoxShadow(
+                  color: Colors.grey.shade200,
+                  spreadRadius: 5,
+                  blurRadius: 7,
+                ),
+              ],
+            ),
+            child: SingleChildScrollView(
+              controller: scrollController,
+              child: ValueListenableBuilder(
+                valueListenable: widget.fontSizeChanged,
+                builder: (context, value, child) {
+                  return AyahTextWidget(
+                    ayahs: widget.ayah,
+                    ayahKeys: ayahKeys,
+                    fontSize: widget.fontSizeChanged.value,
+                  );
+                },
               ),
-            ],
-          ),
-          child: SingleChildScrollView(
-            controller: scrollController,
-            child: ValueListenableBuilder(
-              valueListenable: widget.fontSizeChanged,
-              builder: (context, value, child) {
-                return AyahTextWidget(
-                  ayahs: widget.ayah,
-                  ayahKeys: ayahKeys,
-                  fontSize: widget.fontSizeChanged.value,
-                );
-              },
             ),
           ),
         ),

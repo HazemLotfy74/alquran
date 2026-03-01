@@ -26,7 +26,7 @@ class AppTranslations extends Translations {
       'Download failed': 'فشل التحميل',
       'Audio downloaded successfully': 'تم تحميل السورة بنجاح',
       'Listen To Quran': 'الاستماع',
-      'Audio failed': 'Audio failed',
+      'Audio failed': 'فشل التشغيل',
       'Continue Reading': 'تابع القراءة',
       'Enable your location': 'الرجاء قم بتفعيل خدمات الموقع',
       'Location permission denied': 'تم رفض اذن الوصول للموقع الحالي',

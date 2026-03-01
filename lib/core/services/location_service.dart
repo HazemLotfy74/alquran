@@ -31,8 +31,9 @@ class LocationService {
   }
 
   Future<LocationEntity> getLocation() async {
-    LocationData locationData = await location.getLocation();
-    List<geo.Placemark> placemarks = await geo.placemarkFromCoordinates(
+    final locationData = await location.getLocation();
+
+    final placemarks = await geo.placemarkFromCoordinates(
       locationData.latitude!,
       locationData.longitude!,
     );
@@ -48,6 +49,7 @@ class LocationService {
         country: p.country,
       );
     }
+
     return LocationEntity(
       latitude: 0,
       longitude: 0,

@@ -131,7 +131,9 @@ class QuranCubit extends Cubit<QuranState> {
       StorageKeys.fontSize,
       fontSize,
     );
-    emit(QuranSuccess(surahs: List.from(surahs)));
+    if (state is QuranSuccess) {
+      emit(QuranSuccess(surahs: List.from(surahs)));
+    }
   }
 
   void loadLastRead({required SurahEntity surahEntity}) {
@@ -201,13 +203,16 @@ class QuranCubit extends Cubit<QuranState> {
     if (surah == null) return;
 
     final ayah =
-        localStorageService.get<dynamic>(StorageKeys.lastRead, 'ayah_$surah') ??
+        localStorageService.get<dynamic>(
+          StorageKeys.lastRead,
+          'ayah_${surah.number}',
+        ) ??
         1;
 
     final offset =
         (localStorageService.get<dynamic>(
                   StorageKeys.lastRead,
-                  'offset_$surah',
+                  'offset_${surah.number}',
                 ) ??
                 0)
             .toDouble();
@@ -226,7 +231,5 @@ class QuranCubit extends Cubit<QuranState> {
       fontSize: fontSize,
       surahEntity: surah,
     );
-
-    emit(QuranSuccess(surahs: List.from(surahs)));
   }
 }

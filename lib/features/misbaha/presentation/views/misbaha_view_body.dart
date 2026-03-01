@@ -1,9 +1,10 @@
+import 'package:alquran/shared/widgets/app_background_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import '../../../../generated/assets.dart';
-import '../cubit/sibha_cubit.dart';
+
 import '../../presentation/views/widgets/misanaha_counter.dart';
 import '../../presentation/views/widgets/misbaha_header.dart';
+import '../cubit/sibha_cubit.dart';
 
 class MisbahaViewBody extends StatelessWidget {
   const MisbahaViewBody({super.key});
@@ -13,13 +14,7 @@ class MisbahaViewBody extends StatelessWidget {
     return SizedBox.expand(
       child: Stack(
         children: [
-          // back ground
-          Image.asset(
-            Assets.imagesBackground2,
-            fit: BoxFit.cover,
-            width: double.infinity,
-            height: double.infinity,
-          ),
+          AppBackgroundWidget(),
           SafeArea(
             child: Column(
               children: [

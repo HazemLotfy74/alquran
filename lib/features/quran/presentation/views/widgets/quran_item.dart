@@ -37,7 +37,7 @@ class QuranItem extends StatelessWidget {
                   ),
                 ),
               ),
-              SvgPicture.asset(Assets.imagesSurahNumber),
+              SvgPicture.asset(Assets.surahNumberGreen),
             ],
           ),
           title: Text(surah.name, style: AppTextStyle.bold15),

@@ -1,5 +1,6 @@
 import 'package:alquran/features/quran/presentation/views/widgets/custom_button.dart';
 import 'package:alquran/features/quran/presentation/views/widgets/quran_text_widget.dart';
+import 'package:alquran/shared/widgets/app_background_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -20,39 +21,39 @@ class _ReadQuranViewBodyState extends State<ReadQuranViewBody> {
   Widget build(BuildContext context) {
     return Stack(
       children: [
-        Positioned.fill(
-          child: Image.asset(Assets.imagesBackground2, fit: BoxFit.fill),
-        ),
-        Column(
-          children: [
-            SizedBox(height: 50),
-            QuranTextWidget(
-              fontSizeChanged: fontSize,
-              ayah: widget.surahEntity.ayahs,
-              surahEntity: widget.surahEntity,
-            ),
-            SizedBox(height: 20),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              spacing: 20,
-              children: [
-                CustomButton(
-                  txt: 'Zoom In'.tr,
-                  image: Assets.imagesSearchZoomIn,
-                  onTap: () {
-                    fontSize.value += 2;
-                  },
-                ),
-                CustomButton(
-                  txt: 'Zoom Out'.tr,
-                  image: Assets.imagesSearchZoomOut,
-                  onTap: () {
-                    fontSize.value -= 2;
-                  },
-                ),
-              ],
-            ),
-          ],
+        AppBackgroundWidget(),
+        SingleChildScrollView(
+          child: Column(
+            children: [
+              const SizedBox(height: 50),
+              QuranTextWidget(
+                fontSizeChanged: fontSize,
+                ayah: widget.surahEntity.ayahs,
+                surahEntity: widget.surahEntity,
+              ),
+              const SizedBox(height: 20),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                spacing: 20,
+                children: [
+                  CustomButton(
+                    txt: 'Zoom In'.tr,
+                    image: Assets.searchZoomIn,
+                    onTap: () {
+                      fontSize.value += 2;
+                    },
+                  ),
+                  CustomButton(
+                    txt: 'Zoom Out'.tr,
+                    image: Assets.searchZoomOut,
+                    onTap: () {
+                      fontSize.value -= 2;
+                    },
+                  ),
+                ],
+              ),
+            ],
+          ),
         ),
       ],
     );

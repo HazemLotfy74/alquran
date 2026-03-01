@@ -7,16 +7,16 @@ import 'package:flutter/material.dart';
 class HomeViewBodySliverGrid extends StatelessWidget {
   HomeViewBodySliverGrid({super.key});
   final List<HomeGridItemsEntity> items = [
+    HomeGridItemsEntity(image: Assets.quranBookSvg, title: 'القران الكريم'),
+    HomeGridItemsEntity(image: Assets.headphoneSvgrepo, title: 'الاستماع'),
     HomeGridItemsEntity(
-      image: Assets.imagesQuranBookSvg,
-      title: 'القران الكريم',
+      image: Assets.qiblaCompassSvgrepoCom,
+      title: 'قبلة الصلاة',
     ),
     HomeGridItemsEntity(
-      image: Assets.imagesHeadphoneSvgrepo,
-      title: 'الاستماع',
+      image: Assets.prayDaySvgrepo,
+      title: ' الأذكار والأدعية',
     ),
-    HomeGridItemsEntity(image: Assets.imagesDohaa, title: 'ادعية'),
-    HomeGridItemsEntity(image: Assets.imagesPrayDaySvgrepo, title: 'الاذكار'),
   ];
   @override
   Widget build(BuildContext context) {
@@ -25,6 +25,7 @@ class HomeViewBodySliverGrid extends StatelessWidget {
         crossAxisCount: 2,
         crossAxisSpacing: 15,
         mainAxisSpacing: 15,
+        childAspectRatio: 1.4,
       ),
       itemCount: items.length,
       itemBuilder: (context, index) {
@@ -36,6 +37,9 @@ class HomeViewBodySliverGrid extends StatelessWidget {
             }
             if (index == 1) {
               Navigator.pushNamed(context, AppRouter.listenToQuran);
+            }
+            if (index == 2) {
+              Navigator.pushNamed(context, AppRouter.qibla);
             }
             if (index == 3) {
               Navigator.pushNamed(context, AppRouter.azkar);
