@@ -44,7 +44,7 @@ class _ListenToQuranViewBodyState extends State<ListenToQuranViewBody> {
                     ClipRRect(
                       borderRadius: BorderRadius.circular(16),
                       child: Image.asset(
-                        Assets.imagesListening,
+                        Assets.listening,
                         height: MediaQuery.sizeOf(context).height * 0.5,
                         width: double.infinity,
                         fit: BoxFit.cover,

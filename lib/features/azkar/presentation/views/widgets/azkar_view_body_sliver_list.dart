@@ -1,7 +1,8 @@
+import 'package:alquran/core/functions/on_generate_route.dart';
+import 'package:alquran/shared/widgets/app_background_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:alquran/core/functions/on_generate_route.dart';
-import '../../../../../generated/assets.dart';
+
 import '../../cubit/azkar_categories_cubit.dart';
 import '../../cubit/azkar_categories_state.dart';
 
@@ -12,14 +13,7 @@ class AzkarCategoriesViewBody extends StatelessWidget {
   Widget build(BuildContext context) {
     return Stack(
       children: [
-        // ✅ Background image
-        Positioned.fill(
-          child: Image.asset(
-            Assets.imagesBackground2,
-            fit: BoxFit.cover,
-          ),
-        ),
-
+        AppBackgroundWidget(),
         // ✅ Foreground content
         BlocBuilder<AzkarCategoriesCubit, AzkarCategoriesState>(
           builder: (context, state) {
@@ -47,7 +41,9 @@ class AzkarCategoriesViewBody extends StatelessWidget {
                       final item = categories[index];
 
                       return ListTile(
-                        tileColor: Colors.white.withValues(alpha: 0.8), // optional
+                        tileColor: Colors.white.withValues(
+                          alpha: 0.8,
+                        ), // optional
                         title: Text(
                           item.title,
                           textDirection: TextDirection.rtl,

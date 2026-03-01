@@ -34,7 +34,7 @@ class _SplashViewBodyState extends State<SplashViewBody> {
         mainAxisAlignment: MainAxisAlignment.center,
         crossAxisAlignment: CrossAxisAlignment.center,
         spacing: 10,
-        children: [Image.asset(Assets.imagesQuranSplash2)],
+        children: [Image.asset(Assets.quranSplash2)],
       ),
     );
   }

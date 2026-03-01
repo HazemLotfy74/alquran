@@ -21,12 +21,12 @@ class BottomNavBar extends StatelessWidget {
       items: [
         BottomNavigationBarItem(
           icon: SvgPicture.asset(
-            Assets.imagesUnselectedQuranIcon,
+            Assets.unselectedQuranIcon,
             width: 24,
             height: 24,
           ),
           activeIcon: SvgPicture.asset(
-            Assets.imagesSelectedQuranIcon,
+            Assets.unselectedQuranIcon,
             width: 24,
             height: 24,
           ),
@@ -34,12 +34,12 @@ class BottomNavBar extends StatelessWidget {
         ),
         BottomNavigationBarItem(
           icon: SvgPicture.asset(
-            Assets.imagesUnselectedPrayerIcon,
+            Assets.unselectedPrayerIcon,
             width: 24,
             height: 24,
           ),
           activeIcon: SvgPicture.asset(
-            Assets.imagesSelectedPrayerIcon,
+            Assets.selectedPrayerIcon,
             width: 24,
             height: 24,
           ),
@@ -47,12 +47,12 @@ class BottomNavBar extends StatelessWidget {
         ),
         BottomNavigationBarItem(
           icon: SvgPicture.asset(
-            Assets.imagesUnselectedTasbehIcon,
+            Assets.unselectedTasbehIcon,
             width: 24,
             height: 24,
           ),
           activeIcon: SvgPicture.asset(
-            Assets.imagesSelectedTasbehIcon,
+            Assets.selectedTasbehIcon,
             width: 24,
             height: 24,
           ),

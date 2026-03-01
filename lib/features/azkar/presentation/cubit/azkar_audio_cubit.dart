@@ -41,4 +41,11 @@ class AzkarAudioCubit extends Cubit<AzkarAudioState> {
     audioService.stop();
     emit(AzkarAudioPause());
   }
+
+  @override
+  Future<void> close() async {
+    await audioService.stop();
+    audioService.dispose();
+    return super.close();
+  }
 }

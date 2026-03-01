@@ -32,7 +32,7 @@ class ContinueReadingItem extends StatelessWidget {
                     ),
                   ),
                 ),
-                SvgPicture.asset(Assets.imagesSurahNumberWhite),
+                SvgPicture.asset(Assets.surahNumberWhite),
               ],
             ),
             title: Text(

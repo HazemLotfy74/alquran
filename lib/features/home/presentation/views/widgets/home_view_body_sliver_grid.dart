@@ -7,20 +7,14 @@ import 'package:flutter/material.dart';
 class HomeViewBodySliverGrid extends StatelessWidget {
   HomeViewBodySliverGrid({super.key});
   final List<HomeGridItemsEntity> items = [
+    HomeGridItemsEntity(image: Assets.quranBookSvg, title: 'القران الكريم'),
+    HomeGridItemsEntity(image: Assets.headphoneSvgrepo, title: 'الاستماع'),
     HomeGridItemsEntity(
-      image: Assets.imagesQuranBookSvg,
-      title: 'القران الكريم',
-    ),
-    HomeGridItemsEntity(
-      image: Assets.imagesHeadphoneSvgrepo,
-      title: 'الاستماع',
-    ),
-    HomeGridItemsEntity(
-      image: Assets.imagesQiblaCompassSvgrepoCom,
+      image: Assets.qiblaCompassSvgrepoCom,
       title: 'قبلة الصلاة',
     ),
     HomeGridItemsEntity(
-      image: Assets.imagesPrayDaySvgrepo,
+      image: Assets.prayDaySvgrepo,
       title: ' الأذكار والأدعية',
     ),
   ];

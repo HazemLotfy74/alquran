@@ -40,7 +40,7 @@ class DateAndLiveTimeWidget extends StatelessWidget {
           ),
           RepaintBoundary(
             child: SvgPicture.asset(
-              Assets.imagesVecteezyMuslimManPrayingAfterShalat7885406,
+              Assets.vecteezyMuslimManPrayingAfterShalat7885406,
               width: 120,
               height: 120,
             ),
