@@ -1,16 +1,43 @@
-# alquran
+# 📖 Al Quran & Azkar App
 
-A new Flutter project.
+A modern Islamic mobile application built with **Flutter** that provides Quran reading, daily Azkar, accurate prayer times, and Qibla direction.
 
-## Getting Started
+---
 
-This project is a starting point for a Flutter application.
+## ✨ Features
 
-A few resources to get you started if this is your first Flutter project:
+✅ Holy Quran reading  
+✅ Daily Azkar & supplications  
+✅ Accurate prayer times based on location  
+✅ Qibla direction compass  
+✅ Clean & modern UI  
+✅ Offline-friendly design  
+✅ Arabic language support  
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+---
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+## 📱 Screenshots
+
+| Home | Azkar | Prayer Times | Qibla |
+|------|------|-------------|-------|
+| *(add screenshot)* | *(add screenshot)* | *(add screenshot)* | *(add screenshot)* |
+
+---
+
+## 🧭 Technologies Used
+
+- Flutter
+- Dart
+- BLoC / Cubit State Management
+- Clean Architecture
+- REST API integration
+- Location Services
+- Adhan Prayer Time Library
+- Connectivity Plus
+- GetIt (Dependency Injection)
+
+---
+
+## 🏗️ Architecture
+
+The app follows **Clean Architecture** principles:
