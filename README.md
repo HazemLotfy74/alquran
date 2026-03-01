@@ -16,6 +16,12 @@ A modern Islamic mobile application built with **Flutter** that provides Quran r
 
 ---
 
+## 📱 Screenshots
+
+| Home | Azkar | Prayer Times | Qibla |
+|------|------|-------------|-------|
+| ![](Screenshots/home.jpeg) | ![](Screenshots/azkar.jpeg) | ![](Screenshots/pray time.jpeg) | ![](Screenshots/qibla.jpeg) |
+---
 ## 🧭 Technologies Used
 
 - Flutter
