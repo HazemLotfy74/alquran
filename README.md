@@ -26,7 +26,10 @@ A modern Islamic mobile application built with **Flutter** that provides Quran r
 <p align="center">
   <img src="Alquran Screenshots/pray time.jpeg" width="250"/>
   <img src="Alquran Screenshots/qibla.jpeg" width="250"/>
-</p>---
+</p>
+
+---
+
 ## 🧭 Technologies Used
 
 - Flutter
