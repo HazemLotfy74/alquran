@@ -1,5 +1,5 @@
 import 'package:alquran/core/utils/app_text_style.dart';
-import 'package:alquran/generated/assets.dart';
+import 'package:alquran/shared/widgets/app_background_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -55,12 +55,7 @@ class _ReadAzkarViewBodyState extends State<ReadAzkarViewBody> {
                     final zekr = azkarList[index];
                     return Stack(
                       children: [
-                        Positioned.fill(
-                          child: Image.asset(
-                            Assets.imagesBackground2,
-                            fit: BoxFit.fill,
-                          ),
-                        ),
+                        AppBackgroundWidget(),
                         SafeArea(
                           child: Padding(
                             padding: const EdgeInsets.symmetric(

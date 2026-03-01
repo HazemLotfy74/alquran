@@ -7,6 +7,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get/get.dart';
 import 'package:skeletonizer/skeletonizer.dart';
+
 import '../../../../../shared/widgets/search_text_field.dart';
 
 class QuranViewBody extends StatelessWidget {
@@ -23,15 +24,15 @@ class QuranViewBody extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               spacing: 20,
               children: [
-                SizedBox(height: 2),
-                ScreenHeader(),
+                const SizedBox(height: 2),
+                const ScreenHeader(),
                 SearchTextField(
                   onChanged: (value) {
                     context.read<QuranCubit>().search(value);
                   },
                 ),
                 QuranFilterWidget(filterTxt: filterTxt),
-                SizedBox(height: 5),
+                const SizedBox(height: 5),
               ],
             ),
           ),

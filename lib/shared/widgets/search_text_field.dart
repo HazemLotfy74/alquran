@@ -41,7 +41,7 @@ class SearchTextField extends StatelessWidget {
           ),
           prefixIcon: SizedBox(
             width: 20,
-            child: Center(child: SvgPicture.asset(Assets.imagesSearch)),
+            child: Center(child: SvgPicture.asset(Assets.search)),
           ),
           border: buildOutlineInputBorder(),
           focusedBorder: buildOutlineInputBorder(),

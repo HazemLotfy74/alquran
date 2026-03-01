@@ -7,20 +7,14 @@ import 'package:flutter/material.dart';
 class HomeViewBodySliverGrid extends StatelessWidget {
   HomeViewBodySliverGrid({super.key});
   final List<HomeGridItemsEntity> items = [
+    HomeGridItemsEntity(image: Assets.quranBookSvg, title: 'القران الكريم'),
+    HomeGridItemsEntity(image: Assets.headphoneSvgrepo, title: 'الاستماع'),
     HomeGridItemsEntity(
-      image: Assets.imagesQuranBookSvg,
-      title: 'القران الكريم',
-    ),
-    HomeGridItemsEntity(
-      image: Assets.imagesHeadphoneSvgrepo,
-      title: 'الاستماع',
-    ),
-    HomeGridItemsEntity(
-      image: Assets.assetsImagesQiblaCompassSvgrepoCom,
+      image: Assets.qiblaCompassSvgrepoCom,
       title: 'قبلة الصلاة',
     ),
     HomeGridItemsEntity(
-      image: Assets.imagesPrayDaySvgrepo,
+      image: Assets.prayDaySvgrepo,
       title: ' الأذكار والأدعية',
     ),
   ];
@@ -31,7 +25,7 @@ class HomeViewBodySliverGrid extends StatelessWidget {
         crossAxisCount: 2,
         crossAxisSpacing: 15,
         mainAxisSpacing: 15,
-        childAspectRatio: 1.3,
+        childAspectRatio: 1.4,
       ),
       itemCount: items.length,
       itemBuilder: (context, index) {

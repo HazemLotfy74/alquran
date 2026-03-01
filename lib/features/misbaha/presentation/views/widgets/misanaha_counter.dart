@@ -23,7 +23,6 @@ class MisbahaCounter extends StatelessWidget {
       children: [
         Container(
           width: 140,
-          // radius * 2
           height: 140,
           decoration: BoxDecoration(
             shape: BoxShape.circle,

@@ -1,7 +1,7 @@
 import 'dart:math' as math;
 
 import 'package:alquran/core/services/location_service.dart';
-import 'package:alquran/generated/assets.dart';
+import 'package:alquran/shared/widgets/app_background_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_compass/flutter_compass.dart';
@@ -21,12 +21,7 @@ class QiblaViewBody extends StatelessWidget {
         body: SizedBox.expand(
           child: Stack(
             children: [
-              Image.asset(
-                Assets.imagesBackground2,
-                fit: BoxFit.cover,
-                width: double.infinity,
-                height: double.infinity,
-              ),
+              AppBackgroundWidget(),
               SafeArea(
                 child: Center(
                   child: BlocBuilder<QiblaCubit, QiblaState>(

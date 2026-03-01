@@ -1,5 +1,6 @@
 import 'package:alquran/features/quran/presentation/views/widgets/custom_button.dart';
 import 'package:alquran/features/quran/presentation/views/widgets/quran_text_widget.dart';
+import 'package:alquran/shared/widgets/app_background_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -20,33 +21,31 @@ class _ReadQuranViewBodyState extends State<ReadQuranViewBody> {
   Widget build(BuildContext context) {
     return Stack(
       children: [
-        Positioned.fill(
-          child: Image.asset(Assets.imagesBackground2, fit: BoxFit.fill),
-        ),
+        AppBackgroundWidget(),
         SingleChildScrollView(
           child: Column(
             children: [
-              SizedBox(height: 50),
+              const SizedBox(height: 50),
               QuranTextWidget(
                 fontSizeChanged: fontSize,
                 ayah: widget.surahEntity.ayahs,
                 surahEntity: widget.surahEntity,
               ),
-              SizedBox(height: 20),
+              const SizedBox(height: 20),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 spacing: 20,
                 children: [
                   CustomButton(
                     txt: 'Zoom In'.tr,
-                    image: Assets.imagesSearchZoomIn,
+                    image: Assets.searchZoomIn,
                     onTap: () {
                       fontSize.value += 2;
                     },
                   ),
                   CustomButton(
                     txt: 'Zoom Out'.tr,
-                    image: Assets.imagesSearchZoomOut,
+                    image: Assets.searchZoomOut,
                     onTap: () {
                       fontSize.value -= 2;
                     },

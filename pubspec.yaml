@@ -60,6 +60,8 @@ dependencies:
   media_store_plus: ^0.1.3
   flutter_launcher_icons: ^0.14.4
   connectivity_plus: ^7.0.0
+  cached_network_image: ^3.4.1
+
 
 flutter_launcher_icons:
   android: true
@@ -128,3 +130,18 @@ flutter:
   #
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/to/font-from-package
+
+flutter_assets_generator:
+  # Sets the directory of generated files. Default: lib/generated
+  # Sets the name for the generated file. Default: assets
+  output_filename: assets
+  # Sets the name for the root class. Default: Assets
+  class_name: Assets
+  # Enable package parameter generation (package: 'your_package_name'). Default: false
+  package_parameter_enabled: false
+  # Enable/Disable auto monitoring and dependency management. Default: true
+  auto_detection: true
+  # Generation style: robust (Hierarchical) or legacy (Flat legacy). Default: robust
+  style: legacy
+  # Ignore specific paths. Default: []
+  path_ignore: ["assets/fonts"]

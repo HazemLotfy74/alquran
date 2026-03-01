@@ -16,7 +16,7 @@ class AzkarViewBody extends StatelessWidget {
     return Stack(
       children: [
         Positioned.fill(
-          child: Image.asset(Assets.imagesBackground2, fit: BoxFit.cover),
+          child: Image.asset(Assets.background2, fit: BoxFit.cover),
         ),
 
         BlocBuilder<AzkarCategoriesCubit, AzkarCategoriesState>(
@@ -25,8 +25,6 @@ class AzkarViewBody extends StatelessWidget {
               return Skeletonizer(
                 child: AzkarListItems(
                   categories: [
-                    AzkarCategoryModel(id: 0, title: '', textUrl: ''),
-                    AzkarCategoryModel(id: 0, title: '', textUrl: ''),
                     AzkarCategoryModel(id: 0, title: '', textUrl: ''),
                     AzkarCategoryModel(id: 0, title: '', textUrl: ''),
                     AzkarCategoryModel(id: 0, title: '', textUrl: ''),

@@ -11,7 +11,7 @@ class MisbahaView extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocProvider(
       create: (_) => SibhaCubit(),
-      child: Scaffold(body: MisbahaViewBody()),
+      child: Scaffold(body: const MisbahaViewBody()),
     );
   }
 }

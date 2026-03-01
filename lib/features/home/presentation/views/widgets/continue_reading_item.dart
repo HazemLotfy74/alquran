@@ -32,7 +32,7 @@ class ContinueReadingItem extends StatelessWidget {
                     ),
                   ),
                 ),
-                SvgPicture.asset(Assets.imagesSurahNumberWhite),
+                SvgPicture.asset(Assets.surahNumberWhite),
               ],
             ),
             title: Text(
@@ -51,7 +51,7 @@ class ContinueReadingItem extends StatelessWidget {
                   'Continue Reading'.tr,
                   style: AppTextStyle.medium15.copyWith(color: Colors.white),
                 ),
-                Icon(
+                const Icon(
                   Icons.arrow_forward_ios_outlined,
                   color: Colors.white,
                   size: 20,

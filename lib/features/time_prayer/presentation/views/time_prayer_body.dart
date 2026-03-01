@@ -1,7 +1,7 @@
 import 'package:alquran/features/time_prayer/presentation/views/widgets/current_prayer_card.dart';
 import 'package:alquran/features/time_prayer/presentation/views/widgets/prayer_header.dart';
 import 'package:alquran/features/time_prayer/presentation/views/widgets/prayer_times_list.dart';
-import 'package:alquran/generated/assets.dart';
+import 'package:alquran/shared/widgets/app_background_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get/get_utils/src/extensions/internacionalization.dart';
@@ -17,13 +17,7 @@ class TimePrayerBody extends StatelessWidget {
     return SizedBox.expand(
       child: Stack(
         children: [
-          Image.asset(
-            Assets.imagesBackground2,
-            fit: BoxFit.cover,
-            width: double.infinity,
-            height: double.infinity,
-          ),
-
+          AppBackgroundWidget(),
           SafeArea(
             child: BlocBuilder<PrayerTimesCubit, PrayerTimesState>(
               builder: (context, state) {
