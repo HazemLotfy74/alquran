@@ -19,13 +19,13 @@ A modern Islamic mobile application built with **Flutter** that provides Quran r
 ## 📱 Screenshots
 
 <p align="center">
-  <img src="screenshots/home.jpeg" width="250"/>
-  <img src="screenshots/azkar.jpeg" width="250"/>
+  <img src="Alquran Screenshots/home.jpeg" width="250"/>
+  <img src="Alquran Screenshots/azkar.jpeg" width="250"/>
 </p>
 
 <p align="center">
-  <img src="screenshots/pray time.jpeg" width="250"/>
-  <img src="screenshots/qibla.jpeg" width="250"/>
+  <img src="Alquran Screenshots/pray time.jpeg" width="250"/>
+  <img src="Alquran Screenshots/qibla.jpeg" width="250"/>
 </p>---
 ## 🧭 Technologies Used
 
