@@ -11,24 +11,28 @@ class AzkarCounterWidget extends StatefulWidget {
     required this.totalZekr,
     required this.currentIndex,
     required this.audioUrl,
+    required this.initialCounter,
+    required this.onCounterChanged,
   });
 
   final PageController pageController;
   final int currentIndex;
   final int totalZekr;
   final String audioUrl;
+  final int initialCounter;
+  final ValueChanged<int> onCounterChanged;
 
   @override
   State<AzkarCounterWidget> createState() => _AzkarCounterWidgetState();
 }
 
 class _AzkarCounterWidgetState extends State<AzkarCounterWidget> {
-  int counter = 0;
+  late int counter;
 
   @override
   void initState() {
     super.initState();
-    counter = widget.currentIndex;
+    counter = widget.initialCounter;
   }
 
   @override
@@ -36,7 +40,7 @@ class _AzkarCounterWidgetState extends State<AzkarCounterWidget> {
     super.didUpdateWidget(oldWidget);
 
     if (oldWidget.currentIndex != widget.currentIndex) {
-      counter = 0;
+      counter = widget.initialCounter;
     }
   }
 
@@ -44,7 +48,7 @@ class _AzkarCounterWidgetState extends State<AzkarCounterWidget> {
   Widget build(BuildContext context) {
     return Card(
       margin: EdgeInsets.zero,
-      shape: RoundedRectangleBorder(borderRadius: BorderRadius.zero),
+      shape: const RoundedRectangleBorder(borderRadius: BorderRadius.zero),
       elevation: 20,
       child: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 20),
@@ -55,19 +59,20 @@ class _AzkarCounterWidgetState extends State<AzkarCounterWidget> {
               onPressed: () {
                 if (counter < widget.totalZekr) {
                   counter++;
+                  widget.onCounterChanged(counter);
                   setState(() {});
                 }
                 if (counter == widget.totalZekr) {
-                  if (widget.audioUrl.isEmpty) return;
-                  context.read<AzkarAudioCubit>().stopAudio();
+                  if (widget.audioUrl.isNotEmpty) {
+                    context.read<AzkarAudioCubit>().stopAudio();
+                  }
                   widget.pageController.nextPage(
-                    duration: Duration(milliseconds: 300),
+                    duration: const Duration(milliseconds: 300),
                     curve: Curves.easeIn,
                   );
-                  setState(() {});
                 }
               },
-              shape: CircleBorder(),
+              shape: const CircleBorder(),
               backgroundColor: AppColors.primaryColor,
               child: Text.rich(
                 TextSpan(
@@ -101,10 +106,6 @@ class _AzkarCounterWidgetState extends State<AzkarCounterWidget> {
                   children: [
                     IconButton(
                       onPressed: () {
-                        if (counter > 0) {
-                          counter = 0;
-                          setState(() {});
-                        }
                         if (widget.audioUrl.isEmpty) return;
                         context.read<AzkarAudioCubit>().stopAudio();
                         widget.pageController.previousPage(
@@ -112,7 +113,7 @@ class _AzkarCounterWidgetState extends State<AzkarCounterWidget> {
                           curve: Curves.easeInOut,
                         );
                       },
-                      icon: Icon(Icons.skip_next_outlined),
+                      icon: const Icon(Icons.skip_next_outlined),
                     ),
                     IconButton(
                       onPressed: () {
@@ -129,18 +130,14 @@ class _AzkarCounterWidgetState extends State<AzkarCounterWidget> {
                     ),
                     IconButton(
                       onPressed: () {
-                        if (counter > 0) {
-                          counter = 0;
-                          setState(() {});
-                        }
                         if (widget.audioUrl.isEmpty) return;
                         context.read<AzkarAudioCubit>().pauseAudio();
                         widget.pageController.nextPage(
-                          duration: Duration(milliseconds: 300),
+                          duration: const Duration(milliseconds: 300),
                           curve: Curves.easeIn,
                         );
                       },
-                      icon: Icon(Icons.skip_previous_outlined),
+                      icon: const Icon(Icons.skip_previous_outlined),
                     ),
                   ],
                 );

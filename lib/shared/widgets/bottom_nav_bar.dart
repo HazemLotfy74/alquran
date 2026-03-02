@@ -26,7 +26,7 @@ class BottomNavBar extends StatelessWidget {
             height: 24,
           ),
           activeIcon: SvgPicture.asset(
-            Assets.unselectedQuranIcon,
+            Assets.selectedQuranIcon,
             width: 24,
             height: 24,
           ),

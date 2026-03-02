@@ -5,12 +5,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class CustomDropDownMenuButton extends StatelessWidget {
-  CustomDropDownMenuButton({
+  const CustomDropDownMenuButton({
     super.key,
     required this.reciterId,
     required this.reciterName,
   });
-  final List<DropDownMenuEntity> items = [
+
+  static final List<DropDownMenuEntity> _items = [
     DropDownMenuEntity(value: 2, name: 'عبد الباسط عبد الصمد'),
     DropDownMenuEntity(value: 19, name: 'احمد ابن علي العجمي'),
     DropDownMenuEntity(value: 9, name: 'صديق المنشاوي'),
@@ -23,30 +24,34 @@ class CustomDropDownMenuButton extends StatelessWidget {
     DropDownMenuEntity(value: 97, name: 'ياسر الدوسري'),
     DropDownMenuEntity(value: 7, name: 'مشاري العفاسي'),
   ];
+
   final ValueChanged<int> reciterId;
   final ValueChanged<String> reciterName;
 
   @override
   Widget build(BuildContext context) {
-    return DropdownButtonFormField(
-      items: items.map((e) {
+    return DropdownButtonFormField<int>(
+      items: _items.map((e) {
         return DropdownMenuItem(value: e.value, child: Text(e.name));
       }).toList(),
       onChanged: (value) {
-        reciterName(items.firstWhere((element) => element.value == value).name);
-        reciterId(value!);
-        context.read<AudioCubit>().reciterID = value;
-        context.read<AudioCubit>().getAudio(
-          surahNumber: context
-              .read<AudioCubit>()
-              .quranCubit
-              .selectedSurah!
-              .number,
-          recId: value,
-        );
+        if (value != null) {
+          reciterName(
+            _items.firstWhere((element) => element.value == value).name,
+          );
+          reciterId(value);
+          context.read<AudioCubit>().reciterID = value;
+          final quranCubit = context.read<AudioCubit>().quranCubit;
+          if (quranCubit.selectedSurah != null) {
+            context.read<AudioCubit>().getAudio(
+              surahNumber: quranCubit.selectedSurah!.number,
+              recId: value,
+            );
+          }
+        }
       },
       decoration: InputDecoration(
-        label: Text('القارئ'),
+        label: const Text('القارئ'),
         enabledBorder: buildOutlineInputBorder(),
         focusedBorder: buildOutlineInputBorder(),
         border: buildOutlineInputBorder(),

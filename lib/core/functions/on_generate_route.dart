@@ -6,18 +6,21 @@ import 'package:alquran/features/main_layout/presentation/pages/main_layout_page
 import 'package:alquran/features/quran/presentation/views/quran_view.dart';
 import 'package:alquran/features/quran/presentation/views/read_quran_view.dart';
 import 'package:alquran/features/time_prayer/presentation/time_prayer_view.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:http/http.dart' as http;
 
 import '../../features/azkar/data/datasources/azkar_remote_data_source_impl.dart';
 import '../../features/azkar/domain/repositories/azkar_repository_impl.dart';
 import '../../features/azkar/domain/usecases/get_azkar_by_category_usecase.dart';
+import '../../features/azkar/presentation/cubit/azkar_audio_cubit.dart';
 import '../../features/azkar/presentation/cubit/azkar_cubit.dart';
 import '../../features/misbaha/presentation/misbaha_view.dart';
 import '../../features/qibla/presentation/view/qibla_view.dart';
 import '../../features/splash/presentation/views/splash_view.dart';
 import '../entities/surah_entity.dart';
+import '../services/audio_service.dart';
+import '../services/get_it_service.dart';
 
 class AppRouter {
   static const String splash = '/';
@@ -55,14 +58,21 @@ class AppRouter {
         final categoryId = settings.arguments as int;
 
         return MaterialPageRoute(
-          builder: (_) => BlocProvider<AzkarCubit>(
-            create: (_) {
-              final client = http.Client();
-              final remote = AzkarRemoteDataSourceImpl(client: client);
-              final repo = AzkarRepositoryImpl(remoteDataSource: remote);
-              final usecase = GetAzkarByCategoryUseCase(repo);
-              return AzkarCubit(usecase);
-            },
+          builder: (_) => MultiBlocProvider(
+            providers: [
+              BlocProvider<AzkarCubit>(
+                create: (_) {
+                  final client = http.Client();
+                  final remote = AzkarRemoteDataSourceImpl(client: client);
+                  final repo = AzkarRepositoryImpl(remoteDataSource: remote);
+                  final usecase = GetAzkarByCategoryUseCase(repo);
+                  return AzkarCubit(usecase);
+                },
+              ),
+              BlocProvider<AzkarAudioCubit>(
+                create: (_) => AzkarAudioCubit(getIt.get<AudioService>()),
+              ),
+            ],
             child: ReadAzkarView(categoryId: categoryId),
           ),
         );
@@ -73,7 +83,7 @@ class AppRouter {
         return MaterialPageRoute(builder: (_) => const TimePrayerView());
       case misbaha:
         return MaterialPageRoute(builder: (_) => const MisbahaView());
-       case qibla:
+      case qibla:
         return MaterialPageRoute(builder: (_) => const QiblaView());
       default:
         return MaterialPageRoute(builder: (_) => HomeView());

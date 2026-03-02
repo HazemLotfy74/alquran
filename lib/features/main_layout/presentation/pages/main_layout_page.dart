@@ -15,22 +15,26 @@ class MainLayoutPage extends StatefulWidget {
 }
 
 class _MainLayoutPageState extends State<MainLayoutPage> {
-  // make variable to know which page is currently selected
   int currentIndex = 0;
 
-  // list of all pages on the app.
-  final pages = const [HomeView(), TimePrayerView(), MisbahaView()];
+  static const List<Widget> _pages = [
+    HomeView(),
+    TimePrayerView(),
+    MisbahaView(),
+  ];
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: IndexedStack(index: currentIndex, children: pages),
+      body: IndexedStack(index: currentIndex, children: _pages),
       bottomNavigationBar: BottomNavBar(
         currentIndex: currentIndex,
         onTap: (index) {
-          setState(() {
-            currentIndex = index;
-          });
+          if (currentIndex != index) {
+            setState(() {
+              currentIndex = index;
+            });
+          }
         },
       ),
     );
