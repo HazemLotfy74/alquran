@@ -16,6 +16,7 @@ class ReadAzkarViewBody extends StatefulWidget {
 
 class _ReadAzkarViewBodyState extends State<ReadAzkarViewBody> {
   int currentIndex = 0;
+  final Map<int, int> _azkarCounters = {};
 
   final PageController pageController = PageController();
 
@@ -42,20 +43,20 @@ class _ReadAzkarViewBodyState extends State<ReadAzkarViewBody> {
 
               if (state is AzkarLoaded) {
                 final azkarList = state.data.azkar;
-                azkarList[currentIndex];
                 return PageView.builder(
                   physics: const NeverScrollableScrollPhysics(),
                   controller: pageController,
                   itemCount: azkarList.length,
                   onPageChanged: (index) {
-                    currentIndex = index;
-                    setState(() {});
+                    setState(() {
+                      currentIndex = index;
+                    });
                   },
                   itemBuilder: (context, index) {
                     final zekr = azkarList[index];
                     return Stack(
                       children: [
-                        AppBackgroundWidget(),
+                        const AppBackgroundWidget(),
                         SafeArea(
                           child: Padding(
                             padding: const EdgeInsets.symmetric(
@@ -64,10 +65,12 @@ class _ReadAzkarViewBodyState extends State<ReadAzkarViewBody> {
                             ),
                             child: Align(
                               alignment: Alignment.topRight,
-                              child: Text(
-                                zekr.arabicText,
-                                textDirection: TextDirection.rtl,
-                                style: AppTextStyle.semiBold16,
+                              child: SingleChildScrollView(
+                                child: Text(
+                                  zekr.arabicText,
+                                  textDirection: TextDirection.rtl,
+                                  style: AppTextStyle.semiBold16,
+                                ),
                               ),
                             ),
                           ),
@@ -81,7 +84,6 @@ class _ReadAzkarViewBodyState extends State<ReadAzkarViewBody> {
             },
           ),
         ),
-
         BlocBuilder<AzkarCubit, AzkarState>(
           builder: (context, state) {
             if (state is! AzkarLoaded) {
@@ -96,6 +98,10 @@ class _ReadAzkarViewBodyState extends State<ReadAzkarViewBody> {
               currentIndex: currentIndex,
               totalZekr: currentZekr.repeat,
               audioUrl: currentZekr.audio ?? '',
+              initialCounter: _azkarCounters[currentIndex] ?? 0,
+              onCounterChanged: (value) {
+                _azkarCounters[currentIndex] = value;
+              },
             );
           },
         ),

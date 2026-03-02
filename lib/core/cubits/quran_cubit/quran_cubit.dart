@@ -15,13 +15,6 @@ class QuranCubit extends Cubit<QuranState> {
     favoriteSurahs.addAll(
       localStorageService.getAll<SurahEntity>(favoritesBox),
     );
-    localStorageService.get<dynamic>(StorageKeys.lastRead, StorageKeys.surah);
-
-    localStorageService.get<dynamic>(StorageKeys.lastRead, StorageKeys.ayah);
-    localStorageService.get<dynamic>(
-      StorageKeys.lastRead,
-      StorageKeys.fontSize,
-    );
     _loadLastReadOnStartup();
   }
 
@@ -131,6 +124,14 @@ class QuranCubit extends Cubit<QuranState> {
       StorageKeys.fontSize,
       fontSize,
     );
+
+    lastReadModel = LastReadModel(
+      surahEntity: surahEntity,
+      ayahNumber: ayahNumber,
+      scrollOffset: scrollOffset,
+      fontSize: fontSize,
+    );
+
     if (state is QuranSuccess) {
       emit(QuranSuccess(surahs: List.from(surahs)));
     }

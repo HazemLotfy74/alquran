@@ -1,6 +1,3 @@
-import 'package:alquran/core/services/audio_service.dart';
-import 'package:alquran/core/services/get_it_service.dart';
-import 'package:alquran/features/azkar/presentation/cubit/azkar_audio_cubit.dart';
 import 'package:alquran/features/azkar/presentation/cubit/azkar_cubit.dart';
 import 'package:alquran/features/azkar/presentation/cubit/azkar_state.dart';
 import 'package:alquran/features/azkar/presentation/views/widgets/read_azkar_view_body.dart';
@@ -31,12 +28,9 @@ class _ReadAzkarViewState extends State<ReadAzkarView> {
       builder: (context, state) {
         final title = state is AzkarLoaded ? state.data.title : '...';
 
-        return BlocProvider(
-          create: (context) => AzkarAudioCubit(getIt.get<AudioService>()),
-          child: Scaffold(
-            appBar: buildAppBar(context: context, title: title),
-            body: const ReadAzkarViewBody(),
-          ),
+        return Scaffold(
+          appBar: buildAppBar(context: context, title: title),
+          body: const ReadAzkarViewBody(),
         );
       },
     );
